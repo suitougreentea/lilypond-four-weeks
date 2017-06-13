@@ -5,6 +5,7 @@ LilyPond Four Weeks
 
 * Learn LilyPond for 4 weeks (inspired by language-learning books by Daigaku Shorin)
 * Written in ~~Texinfo~~ Sphinx (reST)
+  * HTML and EPUB are supported as output format
 * From software installation to advanced tweaks
 * Can I complete this work?
 
