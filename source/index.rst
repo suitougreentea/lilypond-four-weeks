@@ -11,6 +11,21 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+.. lily::
+
+  <<
+  \new Staff {
+    \relative c'' {
+     c4 a d e \break
+     g a b c d^\markup \italic "Yeah"
+    }
+  }
+  \new Staff {
+    \relative c'' {
+     c4 a d e
+    }
+  }
+  >>
 
 
 Indices and tables
@@ -19,4 +34,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
