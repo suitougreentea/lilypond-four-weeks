@@ -7,3 +7,12 @@ LilyPond Four Weeks
 * Written in Texinfo
 * From software installation to advanced tweaks
 * Can I complete this work?
+
+## Outline
+
+* Installing LilyPond and recommended editor (Frescobaldi)
+* Compiling file
+* Error message
+* Input sample
+
+...
