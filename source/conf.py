@@ -360,3 +360,6 @@ epub_exclude_files = ['search.html']
 #epub_use_index = True
 
 highlight_language = "lilypond"
+
+def setup(app):
+    app.add_stylesheet('style.css')

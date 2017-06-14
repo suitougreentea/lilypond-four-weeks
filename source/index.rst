@@ -3,8 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to LilyPond Four Weeks's documentation!
-===============================================
+.. _test-header:
+
+Header
+======
 
 Contents:
 
@@ -12,6 +14,8 @@ Contents:
    :maxdepth: 2
 
 .. lily::
+  :caption: Caption
+  :name: test-code
 
   <<
   \new Staff {
@@ -27,22 +31,7 @@ Contents:
   }
   >>
 
-.. code-block:: lilypond
-
-  <<
-  \new Staff {
-    \relative c'' {
-     c4 a d e \break
-     g a b c d^\markup \italic "Yeah"
-    }
-  }
-  \new Staff {
-    \relative c'' {
-     c4 a d e
-    }
-  }
-  >>
-
+Cross-reference: :ref:`test-header`
 
 Indices and tables
 ==================

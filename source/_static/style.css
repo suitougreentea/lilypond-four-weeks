@@ -1,0 +1,18 @@
+.lily-block-wrapper {
+  border: 1px solid #C6C9CB;
+}
+
+.lily-block-wrapper pre {
+  border: none;
+  border-bottom: 1px solid #C6C9CB;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+
+.lily-block-wrapper img {
+  padding: 10px;
+}
+
+div.code-block-caption {
+  border: none;
+}
