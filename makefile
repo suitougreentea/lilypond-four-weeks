@@ -190,7 +190,3 @@ pseudoxml:
 	$(SPHINXBUILD) -b pseudoxml $(ALLSPHINXOPTS) $(BUILDDIR)/pseudoxml
 	@echo
 	@echo "Build finished. The pseudo-XML files are in $(BUILDDIR)/pseudoxml."
-
-sphinxcontrib:
-	cd lilypond-sphinx-contrib; python setup.py build
-	cd lilypond-sphinx-contrib; sudo python setup.py install

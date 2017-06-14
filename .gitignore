@@ -1,5 +1,3 @@
 build/
-lilypond-sphinx-contrib/build/
-lilypond-sphinx-contrib/dist/
-lilypond-sphinx-contrib/lilypond.egg-info/
-
+__pycache__/
+*.pyc

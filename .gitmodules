@@ -1,0 +1,3 @@
+[submodule "lilypond_lexer_extension/lilypondlexer/lilypondlexer"]
+	path = lilypond_lexer_extension/lilypondlexer/lilypondlexer
+	url = https://github.com/jefferyshivers/lilypondlexer.git
