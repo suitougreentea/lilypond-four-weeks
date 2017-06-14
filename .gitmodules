@@ -1,3 +1,6 @@
 [submodule "lilypond_lexer_extension/lilypondlexer/lilypondlexer"]
 	path = lilypond_lexer_extension/lilypondlexer/lilypondlexer
 	url = https://github.com/suitougreentea/lilypondlexer.git
+[submodule "extensions/lilypondlexer"]
+	path = extensions/lilypondlexer
+	url = https://github.com/suitougreentea/lilypondlexer.git

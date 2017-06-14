@@ -17,10 +17,7 @@ import sys
 import os
 import shlex
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '../lilypond_sphinx_contrib'))
-sys.path.append(os.path.join(os.path.dirname(__file__), '../lilypond_lexer_extension'))
-
-#from lilypond_lexer.lilypondlexer import lilypond
+sys.path.append(os.path.join(os.path.dirname(__file__), '../extensions'))
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -35,7 +32,12 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '../lilypond_lexer_exten
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ["sphinxcontrib.lilypond", "lilypondlexer.lexer"]
+extensions = [
+    "extensions.metanode",
+    "extensions.lilyponddirective",
+    "extensions.lilypondlexer",
+    "extensions.customsectnum"
+    ]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

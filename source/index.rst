@@ -3,15 +3,63 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. _test-header:
+.. custom-sect-num::
 
-Header
-======
+.. custom-sect-num-start::
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
+
+.. _test-header:
+
+######
+一週目
+######
+
+======
+第一日
+======
+
+First section
+-------------
+
+Second section
+--------------
+
+######
+二週目
+######
+
+======
+第一日
+======
+
+Third section
+-------------
+
+======
+第二日
+======
+
+Fourth section
+--------------
+
+Cross-reference: :ref:`test-header`
+
+.. custom-sect-num-end::
+
+====
+付録
+====
+
+Unnumbered section
+------------------
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
 
 .. lily::
   :caption: Caption
@@ -22,12 +70,3 @@ Contents:
       c4 a d e \break b
     }
   }
-
-Cross-reference: :ref:`test-header`
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
