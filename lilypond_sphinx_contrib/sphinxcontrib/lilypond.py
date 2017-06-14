@@ -13,7 +13,9 @@
 
     Note: The extension has only very basic support for LaTeX builder.
 
-    Modified by @suitougreentea to export cropped svg images.
+    Further modified by @suitougreentea
+    Change output format to SVG, Remove inline support,
+    Add container and caption, and more.
     pdf2svg must be installed.
 """
 
@@ -32,7 +34,10 @@ from docutils.parsers.rst import directives
 from sphinx.util.compat import Directive
 
 from sphinx.errors import SphinxError
-from sphinx.util import ensuredir
+from sphinx.util import ensuredir#from sphinx.directives import code
+
+from sphinx.util import parselinenos
+from sphinx.util.nodes import set_source_info
 
 class LilyExtError(SphinxError):
     category = 'Lilypond extension error'
@@ -48,56 +53,98 @@ DOC_HEAD = r'''
 }
 '''
 
-Inline_HEAD = r'''
-\markup \abs-fontsize #%s {
-'''
-
-# Inline_HEAD = r'''
-# \markup \abs-fontsize #%s { \musicglyph
-# '''
-
-Inline_BACK = r'''
-}
-'''
-
 Directive_HEAD = r"""
 \new Score \with {
   fontSize = #%s
   \override StaffSymbol #'staff-space = #(magstep %s)
-}{ <<
+}{
 """
 
 Directive_BACK = r"""
->> }
+}
 """
 
-class lily(nodes.Inline, nodes.TextElement):
+class lily(nodes.Part, nodes.Element):
     pass
-
-class displaylily(nodes.Part, nodes.Element):
-    pass
-
-def lily_role(role, rawtext, text, lineno, inliner, options={}, content=[]):
-    music = utils.unescape(text, restore_backslashes=True)
-    return [lily(music=music)], []
 
 class LilyDirective(Directive):
-
     has_content = True
     required_arguments = 0
     optional_arguments = 1
     final_argument_whitespace = True
     option_spec = {
         'nowrap': directives.flag,
+        'linenos': directives.flag,
+        'lineno-start': int,
+        'emphasize-lines': directives.unchanged_required,
+        'caption': directives.unchanged_required,
+        'name': directives.unchanged,
+        'without-code': directives.flag,
+        'without-image': directives.flag,
     }
 
     def run(self):
-        music = '\n'.join(self.content)
-        node = displaylily()
-        node['music'] = music
-        node['docname'] = self.state.document.settings.env.docname
-        node['nowrap'] = 'nowrap' in self.options
-        return [node]
+        without_code = 'without-code' in self.options
+        without_image = 'without-image' in self.options
+
+        if not without_image:
+            ## Generate LilyPond image node
+            music = '\n'.join(self.content)
+            lilyimage = lily()
+            lilyimage['music'] = music
+            lilyimage['docname'] = self.state.document.settings.env.docname
+            lilyimage['nowrap'] = 'nowrap' in self.options
+
+        if not without_code:
+            ## Generate source code node (from sphinx.directives.code)
+            # type: () -> List[nodes.Node]
+            document = self.state.document
+            code = u'\n'.join(self.content)
+            location = self.state_machine.get_source_and_line(self.lineno)
+
+            linespec = self.options.get('emphasize-lines')
+            if linespec:
+                try:
+                    nlines = len(self.content)
+                    hl_lines = parselinenos(linespec, nlines)
+                    if any(i >= nlines for i in hl_lines):
+                        logger.warning('line number spec is out of range(1-%d): %r' %
+                                       (nlines, self.options['emphasize-lines']),
+                                       location=location)
+
+                    hl_lines = [x + 1 for x in hl_lines if x < nlines]
+                except ValueError as err:
+                    return [document.reporter.warning(str(err), line=self.lineno)]
+            else:
+                hl_lines = None
+
+            literal = nodes.literal_block(code, code)
+            literal['language'] = "lilypond"
+            literal['linenos'] = 'linenos' in self.options or \
+                                 'lineno-start' in self.options
+            extra_args = literal['highlight_args'] = {}
+            if hl_lines is not None:
+                extra_args['hl_lines'] = hl_lines
+            if 'lineno-start' in self.options:
+                extra_args['linenostart'] = self.options['lineno-start']
+            set_source_info(self, literal)
+
+        ## Generate caption and container node
+        caption = self.options.get('caption')
+        if caption:
+            caption_str = "LilyPond: %s" % caption
+        else:
+            caption_str = "LilyPond"
+        caption_node = nodes.caption('', '', *[nodes.Text(caption_str)])
+
+        container_node = nodes.container('', literal_block=True, classes=['lily-block-wrapper'])
+        container_node += caption_node
+        if not without_code: container_node += literal
+        if not without_image: container_node += lilyimage
+
+        self.add_name(container_node)
+
+        return [container_node]
 
 def render_lily(self, lily):
     """
@@ -172,38 +219,7 @@ def cleanup_tempdir_lily(app, exc):
     except Exception:
         pass
 
-def latex_visit_lily(self, node):
-    self.body.append('{' + node['music'] + '}')
-    raise nodes.SkipNode
-
-def latex_visit_displaylily(self, node):
-    self.body.append(node['music'])
-    raise nodes.SkipNode
-
 def html_visit_lily(self, node):
-    music = Inline_HEAD % self.builder.config.pnglily_fontsize[0]
-    music += node['music'] + Inline_BACK
-    #music += '#"' + node['music'] + '"' + Inline_BACK
-    try:
-        fname = render_lily(self, music)
-    except LilyExtError as exc:
-        sm = nodes.system_message(str(exc), type='WARNING', level=2,
-                                  backrefs=[], source=node['music'])
-        sm.walkabout(self)
-        self.builder.warn('display lilypond %r: ' % node['music'] + str(exc))
-        raise nodes.SkipNode
-    if fname is None:
-        # something failed -- use text-only as a bad substitute
-        self.body.append('<span class="lily">%s</span>' %
-                         self.encode(node['music']).strip())
-    else:
-        self.body.append(
-            '<img class="lily" src="%s" alt="%s" align="absbottom"/>' %
-            (fname, self.encode(node['music']).strip()))
-    raise nodes.SkipNode
-
-
-def html_visit_displaylily(self, node):
     if node['nowrap']:
         music = node['music']
     else:
@@ -219,7 +235,7 @@ def html_visit_displaylily(self, node):
         self.builder.warn('inline lilypond %r: ' % node['music'] + str(exc))
         raise nodes.SkipNode
     self.body.append(self.starttag(node, 'div', CLASS='lily'))
-    self.body.append('<p>')
+    # self.body.append('<p>')
     if fname is None:
         # something failed -- use text-only as a bad substitute
         self.body.append('<span class="lily">%s</span>' %
@@ -227,18 +243,11 @@ def html_visit_displaylily(self, node):
     else:
         self.body.append('<img src="%s" alt="%s" />\n</div>' %
                          (fname, self.encode(node['music']).strip()))
-    self.body.append('</p>')
+    # self.body.append('</p>')
     raise nodes.SkipNode
 
-
 def setup(app):
-    app.add_node(lily,
-                 latex=(latex_visit_lily, None),
-                 html=(html_visit_lily, None))
-    app.add_node(displaylily,
-                 latex=(latex_visit_displaylily, None),
-                 html=(html_visit_displaylily, None))
-    app.add_role('lily', lily_role)
+    app.add_node(lily, html=(html_visit_lily, None))
     app.add_directive('lily', LilyDirective)
     app.add_config_value('pnglily_version', '2.19.59', False)
     app.add_config_value('pnglily_preamble', '', False)
