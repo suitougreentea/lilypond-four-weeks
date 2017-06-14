@@ -17,19 +17,11 @@ Contents:
   :caption: Caption
   :name: test-code
 
-  <<
   \new Staff {
     \relative c'' {
-     c4 a d e \break
-     g a b c d^\markup \italic "Yeah"
+      c4 a d e \break b
     }
   }
-  \new Staff {
-    \relative c'' {
-     c4 a d e
-    }
-  }
-  >>
 
 Cross-reference: :ref:`test-header`
 

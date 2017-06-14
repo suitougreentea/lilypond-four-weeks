@@ -45,7 +45,7 @@ class LilyExtError(SphinxError):
 DOC_HEAD = r'''
 \paper{
   indent=0\mm
-  line-width=120\mm
+  line-width=160\mm
   oddFooterMarkup=##f
   oddHeaderMarkup=##f
   bookTitleMarkup = ##f
