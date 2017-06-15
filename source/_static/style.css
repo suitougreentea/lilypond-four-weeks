@@ -11,6 +11,14 @@
 
 .lily-block-wrapper img {
   padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 720px;
+  min-width: 400px;
+}
+
+.lily-block-wrapper .lily {
+  overflow-x: scroll;
 }
 
 div.code-block-caption {

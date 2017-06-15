@@ -11,7 +11,7 @@ from extensions.metanode import metanode
 
 class NodeVisitorCustomSectNum(nodes.GenericNodeVisitor):
     depth = 0
-    enabled = False
+    enabled = True
     number = 1
 
     def default_visit(self, node):
@@ -22,7 +22,7 @@ class NodeVisitorCustomSectNum(nodes.GenericNodeVisitor):
             self.enabled = False
         if isinstance(node, nodes.section):
             self.depth += 1
-            if self.enabled and self.depth == 3:
+            if self.enabled and self.depth == 2:
                 numbers = str(self.number)
                 title = node[0]
                 # Use &nbsp; for spacing:
@@ -50,8 +50,7 @@ class CustomSectNumTransform(Transform):
     """Should be applied before `Contents`."""
 
     def apply(self):
-        print(self.document)
-        print("")
+        print(self.document.document)
         self.maxdepth = self.startnode.details.get('depth', None)
         self.startvalue = self.startnode.details.get('start', 1)
         self.prefix = self.startnode.details.get('prefix', '')
@@ -71,31 +70,6 @@ class CustomSectNumTransform(Transform):
         visitor = NodeVisitorCustomSectNum(node.document)
         node.walkabout(visitor)
         return
-        def visit(node, indices):
-            current_node = node
-            for i in indices:
-                current_node = current_node[i]
-            return current_node
-
-        indices = [3, 0]
-        print(visit(node, indices))
-        return
-
-        if depth == 3:
-            numbers = str(currentnumber)
-            title = node[0]
-            # Use &nbsp; for spacing:
-            generated = nodes.inline('', '§' + str(numbers), classes=['sectnum'])
-            title.insert(0, generated)
-            title['auto'] = 1
-            title['sectnum'] = currentnumber
-            print(title)
-            return currentnumber + 1
-        else:
-            for child in node:
-                if isinstance(child, nodes.section):
-                    currentnumber = self.update_section_numbers(child, depth + 1, currentnumber)
-            return currentnumber
 
 class CustomSectNumDirective(Directive):
 
@@ -125,8 +99,22 @@ class CustomSectNumEnd(Directive):
         node['type'] = 'custom_sect_num_end'
         return [node]
 
+def doctree_read(app, doctree):
+    print("doctree-read event:")
+    visitor = NodeVisitorCustomSectNum(doctree)
+    doctree.walkabout(visitor)
+    #for figure_info in doctree.traverse(figure):
+
+def doctree_resolved(app, doctree, docname):
+    print("doctree-resolved event:")
+    #visitor = NodeVisitorCustomSectNum(doctree)
+    #doctree.walkabout(visitor)
+
 def setup(app):
     # app.add_transform(CustomSectNumTransform)
     app.add_directive('custom-sect-num', CustomSectNumDirective)
     app.add_directive('custom-sect-num-start', CustomSectNumStart)
     app.add_directive('custom-sect-num-end', CustomSectNumEnd)
+
+    #app.connect('doctree-read', doctree_read)
+    #app.connect('doctree-resolved', doctree_resolved)
