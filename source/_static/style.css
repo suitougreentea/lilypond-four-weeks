@@ -12,9 +12,9 @@
 .lily-block-wrapper img {
   padding: 10px;
   box-sizing: border-box;
-  width: 100%;
+  /*width: 100%;
   max-width: 720px;
-  min-width: 400px;
+  min-width: 400px;*/
 }
 
 .lily-block-wrapper .lily {
@@ -27,4 +27,8 @@ div.code-block-caption {
 
 .sectnum {
   margin-right: 10px;
+}
+
+.container.indented {
+  padding-left: 20px;
 }
