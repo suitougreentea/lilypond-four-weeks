@@ -42,7 +42,7 @@
 
 注意しなければならないのが、音名は調号や臨時記号のいかんに関わらず実際に演奏される音名で記述されなければならないことである。
 例えば、次の出力は全て同じ音名の入力 ``g' fis' aes' bes'`` から得られる。臨時記号はLilyPondが自動的に付加する。
-オクターブ記号 ``'`` については :ref:`octave` で、調号については :ref:`key_signature` で学ぶ。
+オクターブ記号 ``'`` については :ref:`absolute-octave` で、調号については :ref:`key-signature` で学ぶ。
 
 .. lily::
   :without-code:
@@ -71,7 +71,7 @@
 
 .. num-section::
 
-.. _octave:
+.. _absolute-octave:
 
 絶対オクターブ入力
 ------------------
@@ -95,6 +95,14 @@ LilyPondには2つのオクターブ入力方法がある。絶対オクター�
   c, b, c b
   \clef treble
   c' b' c'' b''
+
+
+.. num-section::
+
+.. _relative-octave:
+
+相対オクターブ入力
+------------------
 
 音符を ``\relative`` コマンドで囲うと、中にある音符では相対オクターブ入力が用いられる。
 相対オクターブ入力では、ある音符のオクターブはその前の音符のピッチによって決定される。
@@ -182,7 +190,7 @@ TODO: cis-ges
   \time 3/4
   \relative c' { c4 d e R2. a b c }
 
-拍子記号コマンド ``\time`` については :ref:`time_signature` で扱う。
+拍子記号コマンド ``\time`` については :ref:`time-signature` で扱う。
 
 LilyPondはもう一種類、空白休符と呼ばれる特殊な休符が存在する。
 空白休符は何の記号も出力しないが、演奏しない時間を作り出すものである。

@@ -1,19 +1,36 @@
+.. _week-1-day-1:
+
 ======
 第一日
 ======
 
-First section
--------------
+.. num-section::
 
-.. lily::
-  :caption: Caption
-  :name: test-code
+.. _lilypond-official-page:
 
-  \new Staff {
-    \relative c'' {
-      c4 a d e \break b
-    }
-  }
+LilyPondの公式ページ
+--------------------
 
-Second section
+
+.. num-section::
+
+.. _downloading-and-installing-lilypond:
+
+LilyPondのダウンロード・インストール
+------------------------------------
+
+
+.. num-section::
+
+.. _launching-lilypond:
+
+LilyPondの実行
 --------------
+
+
+.. num-section::
+
+.. _frescobaldi:
+
+Frescobaldi
+-----------
