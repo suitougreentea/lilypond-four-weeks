@@ -9,11 +9,20 @@ LilyPond Four Weeks
 * From software installation to advanced tweaks
 * Can I complete this work?
 
-## Outline
+## Compiling
 
-* Installing LilyPond and recommended editor (Frescobaldi)
-* Compiling file
-* Error message
-* Input sample
+To compile this document, you need following programs:
 
-...
+* Sphinx (Python Documentation Generator)
+* LilyPond
+* pdf2svg
+
+After installing these programs, run:
+
+```
+make html
+```
+
+```
+make epub
+```
