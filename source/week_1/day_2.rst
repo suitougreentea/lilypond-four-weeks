@@ -4,6 +4,8 @@
 第二日
 ======
 
+.. num-section::
+
 .. _note-names:
 
 音名
@@ -11,7 +13,7 @@
 
 デフォルトでは、以下が基本の音名である。
 
-.. container:: indented
+.. rst-class:: indented
 
   ===== ===== ===== =====
   ド    ``c`` ソ    ``g``
@@ -23,13 +25,13 @@
 ドのシャープなどの派生音は、音名の末尾に ``is`` （シャープ）または ``es`` （フラット）を付ける。
 ``isis`` でダブルシャープ、 ``eses`` でダブルフラットを表現する。
 
-.. container:: indented
+.. rst-class:: indented
 
   ``cis`` → ドのシャープ, ``ges`` → ソのフラット, ``bisis`` → シのダブルシャープ
 
 また、以下の音名に限り別表記がある。
 
-.. container:: indented
+.. rst-class:: indented
 
   ``ees`` = ``es`` , ``eeses`` = ``eses`` , ``aes`` = ``as`` , ``aeses`` = ``ases``
 
@@ -66,6 +68,8 @@
   \key des \major
   g' fis' aes' bes'
 
+
+.. num-section::
 
 .. _octave:
 
@@ -127,6 +131,8 @@ TODO: cis-ges
 基準ピッチは、 ``c`` の任意のオクターブを用いるのが慣例である。
 
 
+.. num-section::
+
 .. _note-length:
 
 音長
@@ -149,6 +155,8 @@ TODO: cis-ges
 
   \relative c' { c2 c4 c c16 c c c c2. c4.. c16 c8. c16 c8 c c1 }
 
+
+.. num-section::
 
 .. _rest:
 

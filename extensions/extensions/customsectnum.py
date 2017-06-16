@@ -99,6 +99,12 @@ class CustomSectNumEnd(Directive):
         node['type'] = 'custom_sect_num_end'
         return [node]
 
+class NumberSection(Directive):
+    def run(self):
+        node = metanode()
+        node['type'] = 'number_section'
+        return [node]
+
 def doctree_read(app, doctree):
     print("doctree-read event:")
     visitor = NodeVisitorCustomSectNum(doctree)
@@ -115,6 +121,8 @@ def setup(app):
     app.add_directive('custom-sect-num', CustomSectNumDirective)
     app.add_directive('custom-sect-num-start', CustomSectNumStart)
     app.add_directive('custom-sect-num-end', CustomSectNumEnd)
+
+    app.add_directive('num-section', NumberSection)
 
     #app.connect('doctree-read', doctree_read)
     #app.connect('doctree-resolved', doctree_resolved)

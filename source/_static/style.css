@@ -29,6 +29,6 @@ div.code-block-caption {
   margin-right: 10px;
 }
 
-.container.indented {
-  padding-left: 20px;
+.indented {
+  margin-left: 20px;
 }
