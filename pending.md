@@ -9,6 +9,7 @@
 * http://lilypond.org/doc/v2.18/Documentation/notation/single-voice.html#simultaneous-expressions
 * http://lilypond.org/doc/v2.19/Documentation/notation/file-structure.html#index-whitespace
 
+* \rest
 * \skip http://lilypond.org/doc/v2.18/Documentation/notation/writing-rests#invisible-rests
 
 * 四分音
