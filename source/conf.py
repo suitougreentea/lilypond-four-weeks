@@ -54,8 +54,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'LilyPond Four Weeks'
-copyright = '2017, suitougreentea'
+project = 'LilyPond四週間'
+copyright = ''
 author = 'suitougreentea'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -100,7 +100,7 @@ exclude_patterns = []
 #show_authors = False
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = 'friendly'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
@@ -128,7 +128,7 @@ html_theme = 'nature'
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-#html_title = None
+html_title = project
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -183,7 +183,7 @@ html_show_sourcelink = False
 #html_show_sphinx = True
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
-#html_show_copyright = True
+html_show_copyright = False
 
 # If true, an OpenSearch description file will be output, and all pages will
 # contain a <link> tag referring to it.  The value of this option must be the
@@ -208,11 +208,11 @@ html_show_sourcelink = False
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'LilyPondFourWeeksdoc'
+#htmlhelp_basename = 'LilyPondFourWeeksdoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
-latex_elements = {
+#latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
 #'papersize': 'letterpaper',
 
@@ -224,15 +224,15 @@ latex_elements = {
 
 # Latex figure (float) alignment
 #'figure_align': 'htbp',
-}
+#}
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
-latex_documents = [
-  (master_doc, 'LilyPondFourWeeks.tex', 'LilyPond Four Weeks Documentation',
-   'suitougreentea', 'manual'),
-]
+#latex_documents = [
+#  (master_doc, 'LilyPondFourWeeks.tex', 'LilyPond Four Weeks Documentation',
+#   'suitougreentea', 'manual'),
+#]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -259,10 +259,10 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    (master_doc, 'lilypondfourweeks', 'LilyPond Four Weeks Documentation',
-     [author], 1)
-]
+#man_pages = [
+#    (master_doc, 'lilypondfourweeks', 'LilyPond Four Weeks Documentation',
+#     [author], 1)
+#]
 
 # If true, show URL addresses after external links.
 #man_show_urls = False
@@ -273,11 +273,11 @@ man_pages = [
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
-texinfo_documents = [
-  (master_doc, 'LilyPondFourWeeks', 'LilyPond Four Weeks Documentation',
-   author, 'LilyPondFourWeeks', 'One line description of project.',
-   'Miscellaneous'),
-]
+#texinfo_documents = [
+#  (master_doc, 'LilyPondFourWeeks', 'LilyPond Four Weeks Documentation',
+#   author, 'LilyPondFourWeeks', 'One line description of project.',
+#   'Miscellaneous'),
+#]
 
 # Documents to append as an appendix to all manuals.
 #texinfo_appendices = []
@@ -298,7 +298,7 @@ texinfo_documents = [
 epub_title = project
 epub_author = author
 epub_publisher = author
-epub_copyright = copyright
+epub_copyright = ""
 
 # The basename for the epub file. It defaults to the project name.
 #epub_basename = project

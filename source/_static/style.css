@@ -29,6 +29,14 @@ div.code-block-caption {
   margin-right: 10px;
 }
 
+span.pre {
+  margin: 0px 2px;
+}
+
+p {
+  text-indent: 1em;
+}
+
 .indented {
-  margin-left: 20px;
+  margin-left: 1em;
 }
