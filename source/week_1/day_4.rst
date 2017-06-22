@@ -6,10 +6,10 @@
 
 .. num-section::
 
-.. _polyphony:
+.. _polyphony-1:
 
-多声表記
---------
+多声表記 (1)
+------------
 
 
 .. num-section::

@@ -1,3 +1,5 @@
+.. _week-2-day-1:
+
 ======
 第一日
 ======
@@ -63,12 +65,11 @@ TODO
 
 .. _implicit-context-creation:
 
-コンテキストの暗黙的生成
+コンテキストの暗黙的作成
 ------------------------
 
 第一週の種々の例で見てきたように、単純に音楽表記を ``{`` ``}`` で囲むことで楽譜を生成することができた。
 これはLilyPondが内部的にコンテキストを自動生成しているためであり、TODO
-
 
 .. lily::
   :caption: 単純な音楽表記
@@ -99,7 +100,78 @@ TODO
     \header { }
   }
 
-TODO: layout, paper, headerの説明をしていない
+音楽が ``\new Voice`` を省略して表記されるとき、暗黙的に ``Voice`` コンテキストが作成される。
+この表記を囲んでいる ``Staff`` が存在しない時、暗黙的に ``Staff`` が作成される。
+同様に、 ``\score`` 、 ``\layout`` 、 ``\book`` 、 ``\paper`` 、 ``\header`` が作成されている。
+
+.. lily::
+  :caption: Voice内でのStaff生成
+  :name: creating-staff-in-voice
+  :without-image:
+
+  \score {
+    \new Staff {
+      \new Voice {
+        \new Staff {
+          c'4
+        }
+      }
+    }
+  }
+
+上のコードのように、 ``Voice`` コンテキスト内で ``\new Staff`` を呼び出す時、 ``Voice`` は ``Staff`` を含むことができないから、
+その外部にある ``Score`` コンテキストを探し、 ``Score`` の子コンテキストとして ``Staff`` が作成される。
+（もちろん、 ``\score`` が存在していない時には暗黙的に作成される。）
+結果的に、 ``Score`` 内には、 ``Score`` の直下にある ``Staff`` と、 ``Voice`` 内で宣言された ``Staff`` の二つが作成されるため、出力は以下のようになる。
+
+.. lily::
+  :name: creating-staff-in-voice-answer
+  :without-code:
+
+  \score {
+    \new Staff {
+      \new Voice {
+        \new Staff {
+          c'4
+        }
+      }
+    }
+  }
+
+下段に新しく作成された ``Staff`` 内に暗黙的に ``Voice`` が作成され、そちらに音符が置かれていることに注意せよ。
+
+
+.. num-section::
+
+.. _polyphony-2:
+
+多声表記 (2)
+------------
+
+:ref:`polyphony-1` で、以下のような表記について学習した。
+
+.. lily::
+  :caption: << \\\\ >> を用いた多声表記
+  :name: polyphony-using-double-slash
+  :without-image:
+
+  << { g'4 a' b' c'' } \\ { e'4 f' g' a' } >>
+
+これは ``\new Voice`` を用いた以下の表記と同等である。
+
+.. lily::
+  :caption: \\new Voice を用いた多声表記
+  :name: polyphony-using-new-voice
+  :without-image:
+
+  <<
+    \new Voice = "1" { \voiceOne g'4 a' b' c'' }
+    \new Voice = "2" { \voiceTwo e'4 f' g' a' }
+  >>
+
+1つの譜の中で複数の声部を保持するために、 ``Staff`` コンテキスト内に複数の ``Voice`` コンテキストを持たせているというわけである。
+
+TODO: スパナを繋げる
 
 
 .. num-section::
