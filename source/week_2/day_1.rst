@@ -30,15 +30,81 @@ TODO
 コンテキストの生成
 ------------------
 
-コンテキストは ``\new`` コマンドで生成する。続いて、生成するコンテキストの種類を入力し、必要であればコンテキストの固有名を ``=`` と文字列で指定する。
+コンテキストは ``\new`` コマンドで生成する。 ``\new`` の後に、生成するコンテキストの種類を与え、必要であればコンテキストの固有名を ``=`` と文字列で指定する。
 最後に音楽表記を与える。
+ただし、 ``Score`` **コンテキストは** ``\new Score`` **によってではなく、** ``\score`` **によって生成する。**
+``\score`` は ``{`` ``}`` で囲まれた音楽表記やいくつかの特殊なコマンドを取り、TODO
+``\score`` は ``\book`` 以外のいかなる子要素になってはならない。TODO
 
 .. lily::
   :caption: コンテキストの生成
   :name: creating-context-example
 
-  \new Staff {
-    \new Voice = "myvoice" {
-      c4
-    }
+  \score {
+    <<
+      \new Staff {
+        \new Voice {
+          g'4
+        }
+      }
+      \new Staff = "staff2" {
+        \new Voice {
+          c'4
+        }
+      }
+    >>
   }
+
+上の例では、 ``\score`` によって ``Score`` コンテキストを生成し、 ``<<`` ``>>`` で囲まれた2つの ``\new Staff`` により同時に2つの譜を作り出している。
+後者の ``Staff`` には ``staff2`` という名前が付いており、ソースファイルの別の場所から参照することができる。
+
+
+.. num-section::
+
+.. _implicit-context-creation:
+
+コンテキストの暗黙的生成
+------------------------
+
+第一週の種々の例で見てきたように、単純に音楽表記を ``{`` ``}`` で囲むことで楽譜を生成することができた。
+これはLilyPondが内部的にコンテキストを自動生成しているためであり、TODO
+
+
+.. lily::
+  :caption: 単純な音楽表記
+  :name: simple-music-example
+  :without-image:
+
+  {
+    c'4 d' e' f'
+  }
+
+これは以下のように解釈される。
+
+.. lily::
+  :caption: 暗黙的に作成されるコンテキスト
+  :name: implicit-context-creation-example
+  :without-image:
+
+  \book {
+    \score {
+      \new Staff {
+        \new Voice {
+          c'4 d' e' f'
+        }
+      }
+      \layout { }
+    }
+    \paper { }
+    \header { }
+  }
+
+TODO: layout, paper, headerの説明をしていない
+
+
+.. num-section::
+
+.. _engraver:
+
+エングラーバ
+------------

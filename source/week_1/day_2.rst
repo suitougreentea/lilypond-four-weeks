@@ -49,24 +49,30 @@
   :caption: ハ長調
   :name: same-pitch-in-c-major
 
-  \key c \major
-  g' fis' aes' bes'
+  {
+    \key c \major
+    g' fis' aes' bes'
+  }
 
 .. lily::
   :without-code:
   :caption: ト長調
   :name: same-pitch-in-g-major
 
-  \key g \major
-  g' fis' aes' bes'
+  {
+    \key g \major
+    g' fis' aes' bes'
+  }
 
 .. lily::
   :without-code:
   :caption: 変二長調
   :name: same-pitch-in-des-major
 
-  \key des \major
-  g' fis' aes' bes'
+  {
+    \key des \major
+    g' fis' aes' bes'
+  }
 
 
 .. num-section::
@@ -86,15 +92,18 @@ LilyPondには2つのオクターブ入力方法がある。絶対オクター�
 ``'`` や ``,`` を複数付けることで更に高いピッチや低いピッチを指定することができる。
 
 以下の例では、ピッチの見やすさのため ``\clef`` コマンドで音部記号を変更しているが、これについては :ref:`clef` で扱う。
+なお、例で見るように、音楽表記は ``{`` ``}`` で囲む必要がある。
 
 .. lily::
   :caption: 絶対オクターブ入力
   :name: absolute-octave-example
 
-  \clef bass
-  c, b, c b
-  \clef treble
-  c' b' c'' b''
+  {
+    \clef bass
+    c, b, c b
+    \clef treble
+    c' b' c'' b''
+  }
 
 
 .. num-section::
@@ -187,8 +196,10 @@ TODO: cis-ges
   :caption: 小節にわたる全休符
   :name: whole-rest-example
 
-  \time 3/4
-  \relative c' { c4 d e R2. a b c }
+  \relative c' {
+    \time 3/4
+    c4 d e R2. a b c
+  }
 
 拍子記号コマンド ``\time`` については :ref:`time-signature` で扱う。
 

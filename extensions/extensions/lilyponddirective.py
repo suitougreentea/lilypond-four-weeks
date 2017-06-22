@@ -44,24 +44,19 @@ class LilyExtError(SphinxError):
 
 DOC_HEAD = r'''
 \paper{
-  indent=0\mm
-  line-width=160\mm
-  oddFooterMarkup=##f
-  oddHeaderMarkup=##f
+  indent = 0\mm
+  line-width = 160\mm
+  oddFooterMarkup = ##f
+  oddHeaderMarkup = ##f
   bookTitleMarkup = ##f
   scoreTitleMarkup = ##f
 }
 '''
 
 Directive_HEAD = r"""
-\new Score \with {
-  fontSize = #%s
-  \override StaffSymbol #'staff-space = #(magstep %s)
-}{
 """
 
 Directive_BACK = r"""
-}
 """
 
 class lily(nodes.Part, nodes.Element):
@@ -223,8 +218,8 @@ def html_visit_lily(self, node):
     if node['nowrap']:
         music = node['music']
     else:
-        music = Directive_HEAD % (self.builder.config.pnglily_fontsize[1],
-                                  self.builder.config.pnglily_fontsize[1])
+        music = Directive_HEAD #% (self.builder.config.pnglily_fontsize[1],
+                               #   self.builder.config.pnglily_fontsize[1])
         music += node['music'] + Directive_BACK
     try:
         fname = render_lily(self, music)
