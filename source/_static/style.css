@@ -29,8 +29,8 @@ div.code-block-caption {
   margin-right: 10px;
 }
 
-span.pre {
-  margin: 0px 2px;
+.docutils.literal {
+  padding: 0px 2px;
 }
 
 p {
