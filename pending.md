@@ -1,5 +1,4 @@
 * オクターブチェック
-* multi-measure rests http://lilypond.org/doc/v2.18/Documentation/notation/writing-rests.html#full-measure-rests
 * 小節番号チェック http://lilypond.org/doc/v2.18/Documentation/notation/bars#index-barNumberCheck-1
 * reharsal mark
 * \breathe http://lilypond.org/doc/v2.18/Documentation/notation/expressive-marks-as-curves#breath-marks

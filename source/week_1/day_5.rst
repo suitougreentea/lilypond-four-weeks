@@ -38,6 +38,16 @@
 
 .. num-section::
 
+.. _rest-2:
+
+休符 (2)
+--------
+
+\rest, multi-measure-rest http://lilypond.org/doc/v2.18/Documentation/notation/writing-rests.html#full-measure-rests
+
+
+.. num-section::
+
 .. _transpose:
 
 トランスポーズ
