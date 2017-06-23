@@ -3,7 +3,7 @@ dist: trusty
 
 branches:
   only:
-    - travis
+    - master
 
 env:
   - LILY_VERSION=2.19.61-1
@@ -30,4 +30,4 @@ deploy:
   github_token: $GITHUB_TOKEN
   local_dir: build/html/
   on:
-    branch: travis
+    branch: master
