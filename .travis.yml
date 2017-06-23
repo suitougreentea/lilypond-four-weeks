@@ -20,3 +20,9 @@ install:
   - sudo apt-get install pdf2svg
 
 script: make html
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: build/html/
