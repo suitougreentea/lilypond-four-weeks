@@ -21,6 +21,9 @@ install:
 
 script: make html
 
+before_deploy:
+  - touch build/html/.nojekyll
+
 deploy:
   provider: pages
   skip_cleanup: true
