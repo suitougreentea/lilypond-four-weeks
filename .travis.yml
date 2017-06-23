@@ -1,0 +1,22 @@
+sudo: enabled
+dist: trusty
+
+branches:
+  only:
+    - travis
+
+env:
+  - LILY_VERSION=2.19.61-1
+
+language: python
+python:
+  - "3.5"
+
+install: 
+  - pip install sphinx
+  - wget -q http://download.linuxaudio.org/lilypond/binaries/linux-64/lilypond-${LILY_VERSION}.linux-64.sh
+  - sudo sh lilypond-${LILY_VERSION}.linux-64.sh --batch
+  - sudo apt-get -qq update
+  - sudo apt-get install pdf2svg
+
+script: make html
