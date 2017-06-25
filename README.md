@@ -14,7 +14,7 @@ LilyPond Four Weeks
 To compile this document, you need following programs:
 
 * Sphinx (Python Documentation Generator)
-* LilyPond
+* LilyPond (>= 2.19.59)
 * pdf2svg
 
 After installing these programs, run:
