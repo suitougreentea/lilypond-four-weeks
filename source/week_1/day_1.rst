@@ -61,6 +61,10 @@ LilyPondの実行・楽譜のコンパイル
 
 Windowsと、Unix系での実行方法をそれぞれ記す。Windows では、エクスプローラから実行する方法、コマンドラインから実行する方法がある。
 
+.. note::
+
+    記述例の ``\version "z.yy.xx"`` は、LilyPond の文法変更に沿ってソースを変換するために必要で、ファイルの先頭に必ず書く。
+
 Windows（エクスプローラから）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -120,7 +124,6 @@ Unix 系 (Linux / FreeBSD / macOS)
     $ lilypond test
 
 エラーがなければ、同じフォルダに "test.pdf" ができる。
-
 
 
 .. num-section::
