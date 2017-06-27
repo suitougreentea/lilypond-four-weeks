@@ -273,7 +273,7 @@ LilyPondのソースファイルには、出力結果に全く関与しないコ
 練習問題
 --------
 
-以下のコード片に記述を追加し、画像のような楽譜を出力せよ。
+以下のコード片に記述を追加し、各画像の通りの楽譜を出力せよ。
 
 .. code-block:: lilypond
 
@@ -283,11 +283,50 @@ LilyPondのソースファイルには、出力結果に全く関与しないコ
     }
 
 .. lily::
-    :caption: 第一週第二日 練習問題
-    :name: practice_week1_day1
+    :caption: 第一週第二日 練習問題 (1)
+    :name: w1d2-exercise1
     :without-code:
 
     \relative c' {
-      c4. g'8 c16 es fis bes, d,8. g,16
-      c4.. r16 r2
+      c2 d4 e
+      f g a g
+      c,1
+    }
+
+.. lily::
+    :caption: 第一週第二日 練習問題 (2)
+    :name: w1d2-exercise2
+    :without-code:
+
+    \relative c' {
+      c8. e16 f8. g16 b8. c16 b8. c16
+      b8. g16 f8. e16 c4 r 
+    }
+
+
+.. lily::
+    :caption: 第一週第二日 練習問題 (3)
+    :name: w1d2-exercise3
+    :without-code:
+
+    \relative c' {
+      c8 f c g' c,4.. r16 |
+      c8 fis' c ges' c,,4.. r16 
+    }
+
+.. lily::
+    :caption: 第一週第二日 練習問題 (4)
+    :name: w1d2-exercise4
+    :without-code:
+
+    \relative c'' {
+      r16 gis16 ais gis
+      fisis gis cis e
+      dis cis dis cis
+      bis cis e gis |
+
+      dis e dis cisis
+      dis b' ais gis
+      fisis e' dis cis
+      b ais gis fisis
     }
