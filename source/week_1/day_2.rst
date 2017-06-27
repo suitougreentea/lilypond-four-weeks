@@ -216,8 +216,17 @@ LilyPondはもう一種類、空白休符と呼ばれる特殊な休符が存在
 
   \relative c' { c4 c s c c c8. c16 s2 }
 
-空白休符は、声部が1つの譜ではほとんど用いられないが、複数の声部を持つ場合に用いることがある。TODO
+空白休符は、声部が1つの譜ではほとんど用いられないが、複数の声部を持つ場合に用いることがある。
+複数声部については :ref:`week-1-day-4` で扱うため、下の例は眺めるだけでよい。
 
+.. lily::
+  :caption: 空白休符（多声部の例）
+  :name: skip-rest-polyphony-example
+
+  \relative c'' {
+    << { s4  c s bes } \\
+       { c,4 e g e   } >>
+  }
 
 .. num-section::
 
