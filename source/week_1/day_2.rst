@@ -279,6 +279,6 @@ LilyPondのソースファイルには、出力結果に全く関与しないコ
     :without-code:
 
     \relative c' {
-      c4. g'8 c16 es f bes, d,8. g,16
-      c2 r2
+      c4. g'8 c16 es fis bes, d,8. g,16
+      c4.. r16 r2
     }
