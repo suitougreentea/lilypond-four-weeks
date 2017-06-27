@@ -101,7 +101,7 @@ Unix 系 (Linux / FreeBSD / macOS)
 
 .. num-section::
 
-.. _frescobaldi:
+.. _frescobaldi-introduction:
 
 Frescobaldi
 -----------
