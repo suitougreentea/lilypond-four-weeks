@@ -132,6 +132,11 @@ LilyPondには2つのオクターブ入力方法がある。絶対オクター�
 次の音符 ``b`` は ``e`` との関係で配置される。下のシが選ばれているが、上のシよりも間隔が狭いことを確認してほしい。
 ``g'`` は、 ``b`` により近い下側のソの1オクターブ上、 ``e,`` は ``g'`` により近い下側のミの更に1オクターブ下となる。
 
+.. note::
+
+    相対オクターブの決定に、 ``-is``, ``-es`` などの派生は **関与せず** 、基本となる（ピアノの白鍵の）音高のみ考慮される。
+    つまり、 ``cis`` と ``ges`` のように、鍵盤上は「上がるほうが近い」関係であっても、 ``{ cis ges }`` における ``ges`` は前の音符より **下に** 配置される （上下の判断は ``{ c g }`` で行われる）。
+
 基準ピッチは省略可能であり、省略された場合は最初の音符が絶対オクターブとして解釈される。
 （基準ピッチが ``f`` になっているのと同じことである。）
 しかし、基準ピッチは常に明記することを推奨している。
@@ -144,7 +149,6 @@ LilyPondには2つのオクターブ入力方法がある。絶対オクター�
 
 上の例では、最初のピッチ ``e'`` が絶対オクターブとして扱われ、それ以降の音符は前の音を基準にしてオクターブが決定されている。
 
-TODO: cis-ges
 
 基準ピッチは、 ``c`` の任意のオクターブを用いるのが慣例である。
 
@@ -213,8 +217,17 @@ LilyPondはもう一種類、空白休符と呼ばれる特殊な休符が存在
 
   \relative c' { c4 c s c c c8. c16 s2 }
 
-空白休符は、声部が1つの譜ではほとんど用いられないが、複数の声部を持つ場合に用いることがある。TODO
+空白休符は、声部が1つの譜ではほとんど用いられないが、複数の声部を持つ場合に用いることがある。
+複数声部については :ref:`week-1-day-4` で扱うため、下の例は眺めるだけでよい。
 
+.. lily::
+  :caption: 空白休符（多声部の例）
+  :name: skip-rest-polyphony-example
+
+  \relative c'' {
+    << { s4  c s bes } \\
+       { c,4 e g e   } >>
+  }
 
 .. num-section::
 
@@ -260,3 +273,61 @@ LilyPondのソースファイルには、出力結果に全く関与しないコ
 
 練習問題
 --------
+
+以下のコード片に記述を追加し、各画像の通りの楽譜を出力せよ。
+
+.. code-block:: lilypond
+
+    \version "2.19.59"
+    \relative c' {
+      % ADD CODE HERE
+    }
+
+.. lily::
+    :caption: 第一週第二日 練習問題 (1)
+    :name: w1d2-exercise1
+    :without-code:
+
+    \relative c' {
+      c2 d4 e
+      f g a g
+      c,1
+    }
+
+.. lily::
+    :caption: 第一週第二日 練習問題 (2)
+    :name: w1d2-exercise2
+    :without-code:
+
+    \relative c' {
+      c8. e16 f8. g16 b8. c16 b8. c16
+      b8. g16 f8. e16 c4 r 
+    }
+
+
+.. lily::
+    :caption: 第一週第二日 練習問題 (3)
+    :name: w1d2-exercise3
+    :without-code:
+
+    \relative c' {
+      c8 f c g' c,4.. r16 |
+      c8 fis' c ges' c,,4.. r16 
+    }
+
+.. lily::
+    :caption: 第一週第二日 練習問題 (4)
+    :name: w1d2-exercise4
+    :without-code:
+
+    \relative c'' {
+      r16 gis16 ais gis
+      fisis gis cis e
+      dis cis dis cis
+      bis cis e gis |
+
+      dis e dis cisis
+      dis b' ais gis
+      fisis e' dis cis
+      b ais gis fisis
+    }
