@@ -15,6 +15,28 @@ LilyPondの公式ページ
 
 `LilyPond - みんなの楽譜作成 <http://lilypond.org/index.ja.html>`_ 
 
+楽譜を記述するにあたって頻繁に参照するページは "マニュアル_" に集積されている。後述する「開発版」のマニュアルは、`コミュニティ/開発/マニュアル <http://lilypond.org/development.ja.html>`_ にある。
+
+* `導入部 <http://lilypond.org/website/introduction.ja.html>`_ - 長所や実例の紹介
+* `ダウンロード <http://lilypond.org/download.ja.html>`_
+* マニュアル_
+
+  * 導入部
+
+    * **学習** - 入門者のためのチュートリアルと、簡単な調整方法が書かれている
+
+  * 常用するマニュアル
+
+    * **記譜法(リファレンス)** - 「学習」より細かく、求める楽譜を実現するための方法が書かれている
+    * **Snippets(スニペット)** (英語のみ) - 項目ごとに1つのテーマについて、特殊な刻譜を行う方法や工夫が列挙されている
+
+  * 常用外のマニュアル
+
+    * **Internals(内部リファレンス)** (英語のみ) - LilyPond が内部的に行っている処理について書かれている。既存のコマンドで対処できない場合に参照する
+
+* `コミュニティ <http://lilypond.org/community.ja.html>`_ - 開発版のマニュアルと、開発への貢献について
+
+.. _マニュアル: http://lilypond.org/website/manuals.ja.html
 
 .. num-section::
 
