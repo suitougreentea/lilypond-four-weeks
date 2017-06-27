@@ -260,3 +260,22 @@ LilyPondのソースファイルには、出力結果に全く関与しないコ
 
 練習問題
 --------
+
+以下のコード片に記述を追加し、画像のような楽譜を出力せよ。
+
+.. code-block:: lilypond
+
+    \version "2.19.59"
+    \relative c' {
+      % ADD CODE HERE
+    }
+
+.. lily::
+    :caption: 第一週第二日 練習問題
+    :name: practice_week1_day1
+    :without-code:
+
+    \relative c' {
+      c4. g'8 c16 es f bes, d,8. g,16
+      c2 r2
+    }
