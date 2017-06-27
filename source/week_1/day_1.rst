@@ -73,8 +73,8 @@ Windows（コマンドラインから）
 
 .. code-block:: bat
 
-    chcp 437          #コンソール文字化けを防ぐ
-    cd path¥to¥file   #test.ly のあるディレクトリに行く
+    chcp 437         # コンソール文字化けを防ぐ
+    cd path¥to¥file  # (必要ならば) test.ly のあるディレクトリに行く
     lilypond test
 
 
@@ -92,7 +92,7 @@ Unix 系 (Linux / FreeBSD / macOS)
 
 .. code-block:: bash
 
-    $ cd /path/to/file #(必要ならば) test.ly のあるディレクトリに行く
+    $ cd /path/to/file  # (必要ならば) test.ly のあるディレクトリに行く
     $ lilypond test
 
 エラーがなければ、同じフォルダに "test.pdf" ができる。
