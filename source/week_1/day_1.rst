@@ -110,7 +110,7 @@ Unix 系 (Linux / FreeBSD / macOS)
     \version "2.19.59"
     \relative { c' d e f g a b c }
 
-2. "test.ly" をコンパイルする。
+2. 端末（ターミナル）を開き、 "test.ly" をコンパイルする。
 
 .. code-block:: bash
 
