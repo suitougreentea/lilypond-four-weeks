@@ -49,7 +49,7 @@ Windows（エクスプローラから）
     \version "2.19.59"
     \relative { c' d e f g a b c }
 
-2. デスクトップ上の "test.ly" を右クリックし、「**Generate PDF**」を選択する。
+2. デスクトップ上の "test.ly" を右クリックし、「**Generate PDF**」を選択する。または、 "test.ly" をダブルクリックする。
 
 .. image:: ./img/day_1_generate_pdf.png
 
@@ -110,7 +110,7 @@ Frescobaldi
 
 代表的な機能に次のようなものがある。
 
-- ソース→楽譜、楽譜→ソース 対応点へのジャンプ
+- ソース→楽譜、楽譜→ソース 対応する箇所の表示・ジャンプ
 - コードのハイライト表示
 - コマンドの補完
 - MIDI 再生
