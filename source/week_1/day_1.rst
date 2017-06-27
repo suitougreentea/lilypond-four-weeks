@@ -75,10 +75,10 @@ Windows（エクスプローラから）
 
 .. image:: ./img/day_1_generate_pdf.png
 
-3. エラーがなければ、デスクトップに "test.pdf" が生成される。エラーがある場合、その詳細は "test.log" に記録される。
+エラーがなければ、デスクトップに "test.pdf" が生成される。エラーがある場合、その詳細は "test.log" に記録される。
 
 
-Windows 版では、同時にエディタ(LilyPad)がインストールされるが、メモ帳と同等の機能しかなく、使う必要がない。
+Windows 版では、LilyPond のインストール時にエディタ(LilyPad)がインストールされるが、メモ帳と同等の機能しかなく、特に使う必要はない。
 
 Windows（コマンドラインから）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -98,6 +98,8 @@ Windows（コマンドラインから）
     chcp 437         # コンソール文字化けを防ぐ
     cd path¥to¥file  # (必要ならば) test.ly のあるディレクトリに行く
     lilypond test
+
+エラーがなければ、同じフォルダに "test.pdf" ができる。
 
 
 Unix 系 (Linux / FreeBSD / macOS)
