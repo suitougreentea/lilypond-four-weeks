@@ -14,7 +14,7 @@ LilyPond Four Weeks (Japanese)
 To compile this document, you need following programs:
 
 * **Python 3.x**
-* [Sphinx (Python Documentation Generator)](http://www.sphinx-doc.org/)
+* [Sphinx (Python Documentation Generator)](http://www.sphinx-doc.org/) (Tested: 1.6.2)
 * [LilyPond](http://lilypond.org/) (>= 2.19.59)
 * pdf2svg ([here](http://www.cityinthesky.co.uk/opensource/pdf2svg/) or [here](https://github.com/dawbarton/pdf2svg))
 
