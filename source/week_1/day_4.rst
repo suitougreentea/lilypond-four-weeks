@@ -208,10 +208,49 @@
 
 .. num-section::
 
-.. _dynamics:
+.. _dynamic:
 
 強弱記号
 --------
+
+強弱記号も、音符に付加するものであり、その音符のタイミングに記号が描かれる。
+
+以下の例で全ての絶対強弱記号（ある点で音量が示され、時間的な変化を含まないもの）を示す。
+
+.. lily::
+  :caption: 絶対強弱記号の一覧
+  :name: absolute-dynamic-list
+
+  \relative c'' {
+    c1\ppppp c\pppp c\ppp c\pp c\p c\mp
+    c\mf c\f c\ff c\fff c\ffff c\fffff
+    c\fp c\sf c\sff c\sp c\spp c\sfz c\rfz
+  }
+
+以上に必要な強弱記号が存在しない場合は、新たに強弱記号を定義する必要があるが、それについては :ref:`new-dynamic` で扱う。
+
+和音の各音に強弱記号を表記することも文法上は可能であるが、実際は何も描かれない。
+
+クレッシェンドは開始点の音符に ``\<`` あるいは ``\cr`` を付加し、デクレッシェンドは ``\>`` あるいは ``\decr`` を付加する。
+新たな強弱記号が配置された時点でクレッシェンドやデクレッシェンドは終了する。強弱記号の無い終了点を記述するには、 ``\!`` を付加する。
+
+.. lily::
+  :caption: クレッシェンド・デクレッシェンド
+  :name: crescendo-and-decrescendo
+
+  \relative c' {
+    c4\< d e f | g1\f | f4\mf\> e d e | f\decr g a b | c1\!
+  }
+
+音符の途中で強弱を変化させたい場合、 ``<<`` ``>>`` と空白休符を用いると良い。
+
+.. lily::
+  :caption: 音符の途中での強弱記号
+  :name: dynamic-during-note-holding
+
+  \relative c' {
+    c4\< d e f | << { g1 | c } { s2 s\ff\> | s2. s4\! } >>
+  }
 
 
 .. num-section::
