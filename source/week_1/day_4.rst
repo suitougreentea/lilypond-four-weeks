@@ -159,7 +159,51 @@
 アーティキュレーション
 ----------------------
 
-アーティキュレーションは和音そのものに付加することも、和音中の各音にも付加することもできる。
+アクセントやフェルマータなどの音符の上下に付く、アーティキュレーションの付加方法について学ぼう。
+
+アーティキュレーションはタイやスラーのように、音符の末尾に付加する形を取る。以下に例を示す。
+
+.. lily::
+  :caption: アーティキュレーション
+  :name: articulation-example
+
+  \relative c' {
+    c4\accent d\staccato e\prall f\fermata g\upbow a\stopped b\segno c\coda
+  }
+
+よく使われるものには簡略表記が存在し、通常はこちらを用いる。
+
+.. lily::
+  :caption: アーティキュレーションの簡略表記
+  :name: articulation-shorthand
+
+  \relative c' {
+    c\accent c-> d\tenuto d-- e\staccato e-. f\staccatissimo f-! g\marcato g-^ a\portato a-_ b\stopped b-+
+  }
+
+アーティキュレーションは和音全体に付加することも、和音中の各音に付加することもできる。
+
+.. lily::
+  :caption: アーティキュレーションと和音
+  :name: articulation-and-chord
+
+  \relative c' {
+    <c e g>4->-. <c-. e-> g>
+  }
+
+全てのアーティキュレーションは :ref:`articulation-list` で確認できる。
+
+一つの音符に複数のアーティキュレーションが付く場合、基本的には先に表記された方が音符の近くに配置されるが、
+一部の記号には優先度が設定されており、例えばスタッカートは表記の順番に関わらず優先的に近くに配置され、フェルマータは遠くに配置される。
+詳しくは :ref:`articulation-priority` で扱う。
+
+.. lily::
+  :caption: アーティキュレーションの優先度
+  :name: articulation-priority-example
+
+  \relative c' {
+    c4-.-> c->-. c\fermata\prall c\prall\fermata
+  }
 
 
 .. num-section::
