@@ -37,7 +37,7 @@
 
 コマンドを付加することで、他の言語での音名表記が可能であるが、本ドキュメントでは省略する。
 :rnotation:`writing-pitches#note-names-in-other-languages <他の言語での音符名>`,
-:rsource:`scm/define-note-names.scm` を参照せよ。a
+:rsource:`scm/define-note-names.scm` を参照せよ。
 
 音符と音符との間は1つ以上のスペースか改行で区切らなければならない。
 すなわち、ドとレを続けて表記する際、 ``cd`` とは書くことができないということである。
