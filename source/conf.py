@@ -38,6 +38,7 @@ extensions = [
     "extensions.lilypondlexer",
     "extensions.customsectnum",
     "extensions.todo",
+    "extensions.lilyponddocref",
     ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -363,6 +364,9 @@ epub_exclude_files = ['search.html']
 #epub_use_index = True
 
 highlight_language = "lilypond"
+
+lily_doc_version = "2.19"
+lily_source_committish = "77267b700c377fd170abcbf4863728937038eb5e"
 
 def setup(app):
     app.add_stylesheet('style.css')

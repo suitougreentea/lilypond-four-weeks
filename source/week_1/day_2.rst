@@ -35,7 +35,9 @@
 
   ``ees`` = ``es`` , ``eeses`` = ``eses`` , ``aes`` = ``as`` , ``aeses`` = ``ases``
 
-コマンドを付加することで、他の言語での音名表記が可能であるが、本ドキュメントでは省略する。:todo:`http://lilypond.org/doc/v2.18/Documentation/notation/writing-pitches#note-names-in-other-languages http://git.savannah.gnu.org/gitweb/?p=lilypond.git;a=blob;f=scm/define-note-names.scm`
+コマンドを付加することで、他の言語での音名表記が可能であるが、本ドキュメントでは省略する。
+:rnotation:`writing-pitches#note-names-in-other-languages <他の言語での音符名>`,
+:rsource:`scm/define-note-names.scm` を参照せよ。a
 
 音符と音符との間は1つ以上のスペースか改行で区切らなければならない。
 すなわち、ドとレを続けて表記する際、 ``cd`` とは書くことができないということである。
