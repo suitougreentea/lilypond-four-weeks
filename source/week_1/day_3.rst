@@ -228,7 +228,7 @@
 
 連符内の全ての音符が連桁で繋がっていない場合、自動的に角括弧が描かれる。
 
-TODO: \tupletSpan http://lilypond.org/doc/v2.19/Documentation/notation/writing-rhythms.html#tuplets
+:todo:`\tupletSpan http://lilypond.org/doc/v2.19/Documentation/notation/writing-rhythms.html#tuplets`
 
 
 .. num-section::

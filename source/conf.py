@@ -36,7 +36,8 @@ extensions = [
     "extensions.metanode",
     "extensions.lilyponddirective",
     "extensions.lilypondlexer",
-    "extensions.customsectnum"
+    "extensions.customsectnum",
+    "extensions.todo",
     ]
 
 # Add any paths that contain templates here, relative to this directory.
