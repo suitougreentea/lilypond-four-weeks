@@ -257,7 +257,7 @@
   :name: dynamic-during-note-holding
 
   \relative c' {
-    c4\< d e f | << { g1 | c } { s2 s\ff\> | s2. s4\! } >>
+    c4\< d e f | << { g2 c | e c } { s4 s\ff\> s s | s s\p\< s s\! } >>
   }
 
 和音の各音に強弱記号を表記することも文法上は可能であるが、出力には何も描かれない。
