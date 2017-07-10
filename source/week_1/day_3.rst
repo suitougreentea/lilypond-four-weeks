@@ -286,3 +286,38 @@ LilyPondは拍子記号に合わせて小節線を自動で付加する。手動
 
 練習問題
 --------
+
+以下のコード片に記述を追加し、各画像の通りの楽譜を出力せよ。
+
+.. code-block:: lilypond
+
+    \version "2.19.59"
+    \relative c' {
+      % ADD CODE HERE
+    }
+
+.. lily::
+    :caption: 第一週第三日 練習問題(1)
+    :name: w1d3-exercise1
+    :without-code:
+
+    \relative c'{
+      c'4(  <g e c> c q)  |
+      d(   <b g d> d q)  |
+      <g, e'>8. <e c'>16~ q8 q~ q[ q <d b'> <f d'>] |
+      <e c'>1 |  \bar "|."
+    }
+
+.. lily::
+    :caption: 第一週第三日 練習問題(2)
+    :name: w1d3-exercise1
+    :without-code:
+
+    \relative c'{
+      \tuplet 3/2 { g'8 c, c }
+      \tuplet 3/2 { g'4    c,8 }
+      \tuplet 3/2 { g'8 c,16[ c] c8 } 
+      \tuplet 6/4 { g'16 c, c d e f } |
+      \tuplet 5/4 { g8\( a( g) a( g)\) } 
+      g,8 g'~ \tuplet 5/4 { g16 f e d c } \bar "|." 
+    }
