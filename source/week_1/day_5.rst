@@ -55,6 +55,24 @@
 
 したがって、例えば ``\clef "treble"`` は通常 ``\clef treble`` のように表記される。
 
+音部記号の名前の後ろに ``^`` と数字を付加することで、実音を数字の度数分下げるように表記することができ、
+``_`` と数字を付加することで、実音を上げるように表記することができる。
+これは、基本的に実音のオクターブ違いを表記するものであるため、通常数字には8や15を用いるが、
+それ以外の度数の指定も可能である。
+また、数字の前後に ``(`` ``)`` あるいは ``[`` ``]`` を付加することで括弧つきの表示にすることができる。
+
+.. lily::
+  :caption: 音部記号の実音移動
+  :name: clef-real-pitch-shift-example
+
+  \relative c' {
+    \clef treble c1
+    \clef "treble_8" c
+    \clef "treble^(15)" c
+  }
+
+記号や数字を含む場合は ``"`` ``"`` を省略できないことを再度確認せよ。
+
 
 .. num-section::
 
@@ -62,6 +80,30 @@
 
 調号
 ----
+
+調号は ``\key`` コマンドで入力できる。
+これは2つの引数を取り、1つ目は主音のピッチである。
+2つ目はスケールを指定するリストであり、通常、既に用意されているコマンドを用いる。
+通常のスケールには ``\major`` 、 ``\minor`` があり、
+教会旋法として ``\ionian`` 、 ``\dorian`` 、 ``\phrygian`` 、 ``\lydian`` 、
+``\mixolydian`` 、 ``\aeolian`` 、 ``\locrian`` が用意されている。
+
+音部記号と同様に、最初の音符の前に指定するとその調号で譜が生成され、音楽の途中では転調を表す。
+デフォルトは ``c \major`` である。
+
+.. lily::
+  :caption: 調号
+  :name: key-signature-example
+
+  \relative c' {
+    \key d \major c1
+    \key fis \minor c
+    \key c \mixolydian c
+  }
+
+新たにスケールを定義することも可能である。 :ref:`creating-scale` で扱う。
+
+ピッチのオクターブは無視される。
 
 
 .. num-section::
@@ -71,6 +113,49 @@
 拍子記号
 --------
 
+拍子記号は ``\time`` コマンドで指定する。今回は引数が1つの場合を学ぼう。
+拍子の分数を ``/`` で区切って指定する。 数字と ``/`` の間にスペースを入れてはいけない。
+
+.. lily::
+  :caption: 拍子記号
+  :name: time-signature-example
+
+  \relative c' {
+    \time 3/4
+    c8 c c c c c
+    \time 6/8
+    c c c c c c
+    \time 4/4
+    c c c c c c c c
+    \time 2/2
+    c c c c c c c c
+  }
+
+例にあるように、4/4拍子、2/2拍子の場合は通常、C記号が用いられる。
+``\numericTimeSignature`` コマンドで分数記号を使用するように変更することができ、
+``\defaultTimeSignature`` コマンドでC記号を用いるように設定を戻すことができる。
+
+
+.. lily::
+  :caption: 数字の拍子記号
+  :name: numeric-time-signature
+
+  \relative c' {
+    \time 4/4 c1
+    \time 2/2 c
+    \numericTimeSignature
+    \time 4/4 c
+    \time 2/2 c
+    \defaultTimeSignature
+    \time 4/4 c
+    \time 2/2 c
+  }
+
+
+自動連桁は拍子記号に基づいて行われるが、
+引数を2つ指定することで、自動連桁の振る舞いを変更することができる。
+:ref:`automatic-beam` で扱う。
+
 
 .. num-section::
 
@@ -79,7 +164,7 @@
 休符 (2)
 --------
 
-\rest, multi-measure-rest http://lilypond.org/doc/v2.18/Documentation/notation/writing-rests.html#full-measure-rests
+\rest, \skip, multi-measure-rest http://lilypond.org/doc/v2.19/Documentation/notation/writing-rests.html
 
 
 .. num-section::
