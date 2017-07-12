@@ -190,3 +190,8 @@ pseudoxml:
 	$(SPHINXBUILD) -b pseudoxml $(ALLSPHINXOPTS) $(BUILDDIR)/pseudoxml
 	@echo
 	@echo "Build finished. The pseudo-XML files are in $(BUILDDIR)/pseudoxml."
+
+testlexer:
+	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html source/misc/lexer_test_suite.rst
+	@echo
+	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
