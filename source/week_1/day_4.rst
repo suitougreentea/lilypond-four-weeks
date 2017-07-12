@@ -179,9 +179,9 @@
 
   \relative c' {
     c\accent c->
-    d\tenuto d--        | 
+    d\tenuto d--        |
     e\staccato e-.
-    f\staccatissimo f-! | 
+    f\staccatissimo f-! |
     g\marcato g-^
     a\portato a-_       |
     b\stopped b-+
@@ -251,12 +251,14 @@
 
 音符の途中で強弱を変化させたい場合、 ``<<`` ``>>`` を導入し、
 タイミングを合わせるための空白休符を用いると良い。
+2行目の ``\override`` コマンドは、見やすさのため音符と音符との幅を広げるものであり、今回は無視して良い。
 
 .. lily::
   :caption: 音符の途中での強弱記号
   :name: dynamic-during-note-holding
 
   \relative c' {
+    \override Score.SpacingSpanner.base-shortest-duration = #(ly:make-moment 1/32)
     c4\< d e f | << { g2 c | e c } { s4 s\ff\> s s | s s\p\< s s\! } >>
   }
 
