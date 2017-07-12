@@ -36,7 +36,7 @@
   ``ees`` = ``es`` , ``eeses`` = ``eses`` , ``aes`` = ``as`` , ``aeses`` = ``ases``
 
 コマンドを付加することで、他の言語での音名表記が可能であるが、本ドキュメントでは省略する。
-:rnotation:`writing-pitches#note-names-in-other-languages <他の言語での音符名>`,
+:rnotation:`他の言語での音符名 <writing-pitches#note-names-in-other-languages>`,
 :rsource:`scm/define-note-names.scm` を参照せよ。
 
 音符と音符との間は1つ以上のスペースか改行で区切らなければならない。
