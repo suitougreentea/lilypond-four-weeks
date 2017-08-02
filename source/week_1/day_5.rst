@@ -159,12 +159,52 @@
 
 .. num-section::
 
+.. _note-length-2:
+
+音長 (2)
+--------
+
+かけざん
+
+
+.. num-section::
+
 .. _rest-2:
 
 休符 (2)
 --------
 
-\rest, \skip, multi-measure-rest http://lilypond.org/doc/v2.19/Documentation/notation/writing-rests.html
+ピッチを持つ音符の末尾に ``\rest`` を付加することでも休符を描くことができる。
+このとき、ピッチによって休符の位置が指定されるため、多声表記において休符の縦方向の位置を調整する際に便利である。
+通常の五線の場合、第三線のピッチが既定の位置である。
+
+.. lily::
+  :caption: \restの例
+  :name: rest-command-example
+
+  \relative c'' {
+    b4\rest d\rest g,\rest d\rest | g'2\rest d,\rest
+  }
+
+空白休符に似たコマンドに ``\skip`` がある。このコマンドは長さの引数を取る。
+長さはコマンドの引数として与えられるため、前後の音符の長さを引き継がないことに注意せよ。
+
+.. lily::
+  :caption: \skipの例
+  :name: skip-command-example
+
+  <<
+    \relative c' {
+      c8 \skip 4 c c2
+    }
+    \relative c' {
+      c8 c4 c8 c2
+    }
+  >>
+
+``s`` との違いは、 ``s`` が見えない「休符」を生成するのに対し、 ``\skip`` は単に時間をスキップするだけという点である。
+
+multi-measure-rest http://lilypond.org/doc/v2.19/Documentation/notation/writing-rests.html
 
 
 .. num-section::
