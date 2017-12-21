@@ -1,0 +1,437 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>第三日 &#8212; LilyPond四週間</title>
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="第四日" href="day_4.html" />
+    <link rel="prev" title="第二日" href="day_2.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="day_4.html" title="第四日"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="day_2.html" title="第二日"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LilyPond四週間</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">第一週</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="week-1-day-3">
+<span id="id1"></span><h1>第三日<a class="headerlink" href="#week-1-day-3" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="chord">
+<span id="id2"></span><h2>和音<a class="headerlink" href="#chord" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>和音を入力するには、 <code class="docutils literal"><span class="pre">&lt;</span></code> と <code class="docutils literal"><span class="pre">&gt;</span></code> の中に音高を入力し、外に音長を記述する。</p>
+<div class="lily-block-wrapper docutils container" id="chord-example">
+<div class="code-block-caption"><span class="caption-text">LilyPond: 和音</span><a class="headerlink" href="#chord-example" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="p">&lt;</span><span class="nb">c</span><span class="p">&#39;</span> <span class="nb">e</span><span class="p">&#39;&gt;</span><span class="mi">4</span> <span class="p">&lt;</span><span class="nb">e</span><span class="p">&#39;</span> <span class="nb">c</span><span class="p">&#39;&#39;&gt;</span> <span class="p">&lt;</span><span class="nb">c</span><span class="p">&#39;&#39;</span> <span class="nb">e</span><span class="p">&#39;&#39;</span> <span class="nb">g</span><span class="p">&#39;&#39;&gt;</span><span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img class="lily" src="../_images/lily/5450ae0c5435fd07ab66e43cfb2523144fc5c1bd.svg" alt="{
+  &lt;c' e'&gt;4 &lt;e' c''&gt; &lt;c'' e'' g''&gt;2
+}" align="absbottom"/></div>
+<p>相対オクターブ入力における音高は、和音中と、和音の外の（次の）音で基準が異なる。
+和音中においては1つ前にある音高を基準にし、和音の <strong>次の音符</strong> は、 <strong>直前の和音の最初</strong> の音符の音高 が基準となる。</p>
+<div class="lily-block-wrapper docutils container" id="chord-in-relative-octave">
+<div class="code-block-caption"><span class="caption-text">LilyPond: 相対オクターブ入力における和音</span><a class="headerlink" href="#chord-in-relative-octave" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\relative </span><span class="nb">c</span><span class="p">&#39;</span> <span class="p">{</span>
+  <span class="nb">e</span><span class="mi">4</span> <span class="p">&lt;</span><span class="nb">g</span> <span class="nb">c</span> <span class="nb">e</span> <span class="nb">g</span><span class="p">&gt;</span> <span class="nb">d</span> <span class="p">&lt;</span><span class="nb">e</span> <span class="nb">a</span><span class="p">,</span> <span class="nb">g</span><span class="p">&#39;</span> <span class="nb">c</span><span class="p">&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img class="lily" src="../_images/lily/7caa56dd03df544ce883aceed00d71a21ad56d5d.svg" alt="\relative c' {
+  e4 &lt;g c e g&gt; d &lt;e a, g' c&gt;
+}" align="absbottom"/></div>
+<p>1つ目の和音 <code class="docutils literal"><span class="pre">&lt;g</span> <span class="pre">c</span> <span class="pre">e</span> <span class="pre">g&gt;</span></code> においては、 最初の <code class="docutils literal"><span class="pre">g</span></code> はその前の音 <code class="docutils literal"><span class="pre">e</span></code> を基準にしており、
+それぞれ <code class="docutils literal"><span class="pre">c</span></code> は <code class="docutils literal"><span class="pre">g</span></code> 、<code class="docutils literal"><span class="pre">e</span></code> は <code class="docutils literal"><span class="pre">c</span></code> 、 <code class="docutils literal"><span class="pre">g</span></code> は <code class="docutils literal"><span class="pre">e</span></code> を基準にしている。
+次の音 <code class="docutils literal"><span class="pre">d</span></code> は、前の音が和音であるから、和音の最初の音 <code class="docutils literal"><span class="pre">g</span></code> が基準となる。
+最後の和音では、 <code class="docutils literal"><span class="pre">e</span></code> は <code class="docutils literal"><span class="pre">d</span></code> が基準であり、続く音は音の高低の順番にかかわらず、和音中の1つ前の音が基準となっていることを確認せよ。</p>
+</div>
+<div class="section" id="chord-repeat">
+<span id="id3"></span><h2>和音の繰り返し (1)<a class="headerlink" href="#chord-repeat" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>同じ和音を繰り返すには、音名の代わりに <code class="docutils literal"><span class="pre">q</span></code> を入力する。オクターブ記号は許容されない。
+<code class="docutils literal"><span class="pre">q</span></code> は、間に単音や休符が存在しても、必ず最後に出現した和音と同じ音高の和音を生成する。</p>
+<div class="lily-block-wrapper docutils container" id="chord-repeat-example">
+<div class="code-block-caption"><span class="caption-text">LilyPond: 和音の繰り返し</span><a class="headerlink" href="#chord-repeat-example" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\relative </span><span class="nb">c</span><span class="p">&#39;</span> <span class="p">{</span>
+  <span class="p">&lt;</span><span class="nb">c</span> <span class="nb">e</span> <span class="nb">g</span><span class="p">&gt;</span><span class="mi">2</span> <span class="nb">q</span><span class="mi">4</span> <span class="p">&lt;</span><span class="nb">c</span> <span class="nb">f</span> <span class="nb">a</span><span class="p">&gt;</span><span class="mi">8</span> <span class="nb">r</span> <span class="nb">f</span><span class="p">&#39;</span><span class="mi">4</span> <span class="nb">r</span><span class="mi">8</span> <span class="nb">q</span> <span class="nb">r</span><span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img class="lily" src="../_images/lily/06379be3050d4e154269f5ad828a4cd68aa0db28.svg" alt="\relative c' {
+  &lt;c e g&gt;2 q4 &lt;c f a&gt;8 r f'4 r8 q r2
+}" align="absbottom"/></div>
+<p>音楽の最初で <code class="docutils literal"><span class="pre">q</span></code> を用いるとエラーとなる。</p>
+</div>
+<div class="section" id="single-note-or-chord-repeat">
+<span id="id4"></span><h2>単音か和音の繰り返し<a class="headerlink" href="#single-note-or-chord-repeat" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>音高を省略し音長のみを指定すると、最後に出現した単音あるいは和音と同じ音高が繰り返される。
+休符は繰り返されない。</p>
+<div class="lily-block-wrapper docutils container" id="single-note-or-chord-repeat-example">
+<div class="code-block-caption"><span class="caption-text">LilyPond: 単音か和音の繰り返し</span><a class="headerlink" href="#single-note-or-chord-repeat-example" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\relative </span><span class="nb">c</span><span class="p">&#39;</span> <span class="p">{</span>
+  <span class="p">&lt;</span><span class="nb">c</span> <span class="nb">e</span> <span class="nb">g</span><span class="p">&gt;</span><span class="mi">2</span> <span class="mi">4</span> <span class="p">&lt;</span><span class="nb">c</span> <span class="nb">f</span> <span class="nb">a</span><span class="p">&gt;</span><span class="mi">8</span> <span class="nb">r</span> <span class="nb">f</span><span class="p">&#39;</span><span class="mi">4</span> <span class="nb">r</span><span class="mi">8</span> <span class="mi">8</span> <span class="nb">r</span><span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img class="lily" src="../_images/lily/3d67324ddcf76f760659d30ff888883bb7b3ef4b.svg" alt="\relative c' {
+  &lt;c e g&gt;2 4 &lt;c f a&gt;8 r f'4 r8 8 r2
+}" align="absbottom"/></div>
+<p><a class="reference internal" href="#chord-repeat"><span class="std std-ref">和音の繰り返し (1)</span></a> の例と比較せよ。</p>
+<p>これを用いる際の注意は、前の音符の音長が指定されておらず、前の音符と数字がスペースで区切られているだけの場合、
+数字がその音符の音長として解釈されてしまうことである。すなわち、 <code class="docutils literal"><span class="pre">c</span> <span class="pre">4</span></code> は <code class="docutils literal"><span class="pre">c</span> <span class="pre">c4</span></code> ではなく <code class="docutils literal"><span class="pre">c4</span></code> と解釈される。
+これはLilyPondの構文解析における仕様であり、このような場合においては、前の音符の音長を指定するか、数字のみの繰り返しを避ける必要がある。
+なお、前の音符にスペース以外の何らかの文字が付加されていればこのような問題は起こらない。</p>
+<p>音楽の最初で音高を省略すると <code class="docutils literal"><span class="pre">c'</span></code> が出力される。</p>
+</div>
+<div class="section" id="tie-and-slur">
+<span id="id5"></span><h2>タイとスラー<a class="headerlink" href="#tie-and-slur" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>タイを描くには、タイを繋げる2つの音符のうち、最初の音符に <code class="docutils literal"><span class="pre">~</span></code> を付加する。</p>
+<div class="lily-block-wrapper docutils container" id="tie-example">
+<div class="code-block-caption"><span class="caption-text">LilyPond: タイ</span><a class="headerlink" href="#tie-example" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\relative </span><span class="nb">c</span><span class="p">&#39;</span> <span class="p">{</span>
+  <span class="nb">c</span><span class="mi">2</span><span class="o">~</span> <span class="nb">c</span><span class="mi">8</span> <span class="nb">g</span><span class="p">&#39;</span><span class="mi">4</span> <span class="nb">f</span><span class="mi">8</span><span class="o">~</span> <span class="mi">8</span><span class="p">.</span> <span class="nb">e</span><span class="mi">16</span><span class="o">~</span> <span class="mi">8</span> <span class="nb">d</span><span class="mi">8</span> <span class="nb">c</span><span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img class="lily" src="../_images/lily/57b5c569e3a3f4692e7de8704a9bb4e1bc41e0da.svg" alt="\relative c' {
+  c2~ c8 g'4 f8~ 8. e16~ 8 d8 c2
+}" align="absbottom"/></div>
+<p>和音にタイを付加する際、和音内の各音にタイ記号を付加することで繋ぐ音符を指定できるし、
+<code class="docutils literal"><span class="pre">&lt;</span></code> <code class="docutils literal"><span class="pre">&gt;</span></code> の外側に付加すれば可能な音全てがタイで繋がる。</p>
+<div class="lily-block-wrapper docutils container" id="chord-tie-example">
+<div class="code-block-caption"><span class="caption-text">LilyPond: 和音のタイ</span><a class="headerlink" href="#chord-tie-example" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\relative </span><span class="nb">c</span><span class="p">&#39;</span> <span class="p">{</span>
+  <span class="p">&lt;</span><span class="nb">c</span> <span class="nb">e</span><span class="o">~</span> <span class="nb">g</span><span class="p">&gt;</span><span class="mi">2</span> <span class="nb">q</span> <span class="p">&lt;</span><span class="nb">c</span> <span class="nb">f</span> <span class="nb">a</span><span class="p">&gt;</span><span class="o">~</span> <span class="p">&lt;</span><span class="nb">c</span> <span class="nb">e</span> <span class="nb">g</span><span class="p">&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img class="lily" src="../_images/lily/2f94de2f18aff9f8656ef169eaf69b2b1ced164f.svg" alt="\relative c' {
+  &lt;c e~ g&gt;2 q &lt;c f a&gt;~ &lt;c e g&gt;
+}" align="absbottom"/></div>
+<p>タイ記号は音符の後にスペースを開けて <code class="docutils literal"><span class="pre">c</span> <span class="pre">~</span> <span class="pre">c</span></code> のようにも書くことができるが、この場合でも <code class="docutils literal"><span class="pre">~</span></code> は前者の音符と後者の音符を繋ぐ役割を果たしているわけではない。
+<code class="docutils literal"><span class="pre">~</span></code> はあくまでも前者の音符に属しており、「次の同じ音高の音符とタイを繋げよ」という情報に過ぎないのである。</p>
+<p>スラーを描くには、最初の音符に <code class="docutils literal"><span class="pre">(</span></code> を付加し、最後の音符に <code class="docutils literal"><span class="pre">)</span></code> を付加する。</p>
+<div class="lily-block-wrapper docutils container" id="slur-example">
+<div class="code-block-caption"><span class="caption-text">LilyPond: スラー</span><a class="headerlink" href="#slur-example" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\relative </span><span class="nb">c</span><span class="p">&#39;</span> <span class="p">{</span>
+  <span class="nb">c</span><span class="mi">4</span><span class="o">(</span> <span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span><span class="o">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img class="lily" src="../_images/lily/d31658973e7596a7a02a1c4be3ed094fb152613d.svg" alt="\relative c' {
+  c4( d e f)
+}" align="absbottom"/></div>
+<p>注意を要するのが、 <code class="docutils literal"><span class="pre">(c4</span> <span class="pre">d</span> <span class="pre">e</span> <span class="pre">f)</span></code> のように括弧で音符を囲うようにしてはいけないということである。
+スラーもタイのように「始まり」と「終わり」の情報を音符に付加しているだけであるということに留意せよ。</p>
+<p>フレージングスラーという、もう一種類のスラーが存在する。構文は <code class="docutils literal"><span class="pre">\(</span></code> <code class="docutils literal"><span class="pre">\)</span></code> である。
+スラーとフレージングスラーの違いは見た目にはわずかしか現れないが、大きな違いは、歌詞の自動割付においてスラーがメリスマを作成するのに対し、フレージングスラーは作成しないことである。
+詳しいことや具体例は <span class="xref std std-ref">TODO</span> で扱う。</p>
+<p>スラーとフレージングスラーは同時に使用することができる。</p>
+<div class="lily-block-wrapper docutils container" id="simultaneous-use-of-slur-and-phrasing-slur">
+<div class="code-block-caption"><span class="caption-text">LilyPond: スラーとフレージングスラーの同時使用</span><a class="headerlink" href="#simultaneous-use-of-slur-and-phrasing-slur" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\relative </span><span class="nb">c</span><span class="p">&#39;</span> <span class="p">{</span>
+  <span class="nb">c</span><span class="mi">4</span><span class="nf">\( </span><span class="nb">e</span><span class="mi">8</span><span class="o">(</span> <span class="nb">g</span><span class="o">)</span> <span class="nb">f</span><span class="mi">4</span> <span class="nb">e</span><span class="mi">8</span><span class="o">(</span> <span class="nb">d</span><span class="nf">\) </span><span class="nb">c</span><span class="mi">1</span><span class="o">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img class="lily" src="../_images/lily/69ee78b6778b8d5391790fe6e684d4053d99672e.svg" alt="\relative c' {
+  c4\( e8( g) f4 e8( d\) c1)
+}" align="absbottom"/></div>
+<p><span class="xref std std-ref">spanner-id</span> で後述する <code class="docutils literal"><span class="pre">\=</span></code> コマンドを用いることで、スラーやフレージングスラーの片方を同時に複数使用することができる。</p>
+<p>タイやスラーに限らず、音符の末尾に付けるタイプの記号（代表的なものにアーティキュレーションがあり、 <a class="reference internal" href="day_4.html#articulation"><span class="std std-ref">アーティキュレーション</span></a> で扱う）は、
+音符と記号との間にスペースを含んでも良く、また複数の記号を同じ音符に付加する場合の順番の制限も無い。</p>
+<div class="lily-block-wrapper docutils container" id="multiple-use-of-trailing-sign">
+<div class="code-block-caption"><span class="caption-text">LilyPond: 音符の末尾に付ける記号の複合</span><a class="headerlink" href="#multiple-use-of-trailing-sign" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\relative </span><span class="nb">c</span><span class="p">&#39;</span> <span class="p">{</span>
+  <span class="nb">c</span><span class="mi">8</span> <span class="o">(</span> <span class="nf">\( </span><span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span> <span class="o">)</span> <span class="nb">g</span><span class="mi">4</span> <span class="o">(</span> <span class="o">~</span> <span class="nf">\) </span><span class="nb">g</span><span class="mi">16</span> <span class="nb">f</span> <span class="nb">e</span> <span class="nb">d</span> <span class="nb">c</span><span class="mi">1</span> <span class="o">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img class="lily" src="../_images/lily/00c39f1c369a04c1c6f8f341c20c56402b736551.svg" alt="\relative c' {
+  c8 ( \( d e f ) g4 ( ~ \) g16 f e d c1 )
+}" align="absbottom"/></div>
+<p><code class="docutils literal"><span class="pre">c8</span></code> には <code class="docutils literal"><span class="pre">(</span></code> と <code class="docutils literal"><span class="pre">\(</span></code> の二つ、 <code class="docutils literal"><span class="pre">g4</span></code> には <code class="docutils literal"><span class="pre">(</span></code> <code class="docutils literal"><span class="pre">~</span></code> <code class="docutils literal"><span class="pre">\)</span></code> の三つの記号が付加されているが、
+これらの順番はどのようにしても良く、間のスペースが無くても構わない。</p>
+</div>
+<div class="section" id="beam">
+<span id="id6"></span><h2>連桁<a class="headerlink" href="#beam" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>今までの例で見てきたように、連桁はLilyPondが拍子記号に合わせて自動で付加している。
+しかしながら、休符を跨ぐ連桁が必要な場面や、特に声楽曲において拍の制約に縛られない連桁が必要な場面がある。
+その場合、 <code class="docutils literal"><span class="pre">[</span></code> <code class="docutils literal"><span class="pre">]</span></code> で手動連桁を設定する。スラーと同様に、始まりと終わりの音符の末尾に付加する形で記述する。
+連桁は休符に始端を設けることも可能である。</p>
+<div class="lily-block-wrapper docutils container" id="manual-beam">
+<div class="code-block-caption"><span class="caption-text">LilyPond: 手動連桁</span><a class="headerlink" href="#manual-beam" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\relative </span><span class="nb">c</span><span class="p">&#39;</span> <span class="p">{</span>
+  <span class="nb">c</span><span class="mi">8</span><span class="o">[</span> <span class="nb">r</span> <span class="nb">d</span> <span class="nb">e</span><span class="o">]</span> <span class="nb">r</span><span class="o">[</span> <span class="nb">f</span> <span class="nb">e</span><span class="o">]</span> <span class="nb">d</span><span class="o">[</span>
+  <span class="nb">e</span> <span class="nb">d</span> <span class="nb">c</span><span class="o">]</span> <span class="nb">b</span><span class="o">[]</span> <span class="nb">c</span><span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img class="lily" src="../_images/lily/6919567101f7c577ceb6948ac8bc61626d622cc0.svg" alt="\relative c' {
+  c8[ r d e] r[ f e] d[
+  e d c] b[] c2
+}" align="absbottom"/></div>
+<p>自動連桁をさせたくない場合、その音符の末尾に <code class="docutils literal"><span class="pre">\noBeam</span></code> を付加する。</p>
+<div class="lily-block-wrapper docutils container" id="no-beam-example">
+<div class="code-block-caption"><span class="caption-text">LilyPond: 自動連桁の局所的な無効化</span><a class="headerlink" href="#no-beam-example" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\relative </span><span class="nb">c</span><span class="p">&#39;</span> <span class="p">{</span>
+  <span class="nb">c</span><span class="mi">8</span> <span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span>
+  <span class="nb">c</span><span class="nf">\noBeam </span><span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span>
+  <span class="nb">c</span> <span class="nb">d</span><span class="nf">\noBeam </span><span class="nb">e</span> <span class="nb">f</span>
+  <span class="nb">c</span> <span class="nb">d</span> <span class="nb">e</span><span class="nf">\noBeam </span><span class="nb">f</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img class="lily" src="../_images/lily/3970ef2d2c35e590c72b4498b6c01082164a6b8c.svg" alt="\relative c' {
+  c8 d e f
+  c\noBeam d e f
+  c d\noBeam e f
+  c d e\noBeam f
+}" align="absbottom"/></div>
+<p>3拍目以降において、 <code class="docutils literal"><span class="pre">\noBeam</span></code> が付加された音符の連桁が解除されていることに注目せよ。</p>
+<p>一定時間完全に連桁を無効にする方法については、 <span class="xref std std-ref">disabling-and-enabling-automatic-beam</span> で扱う。</p>
+</div>
+<div class="section" id="tuplet">
+<span id="id7"></span><h2>連符<a class="headerlink" href="#tuplet" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>連符を記述するには、 <code class="docutils literal"><span class="pre">\tuplet</span></code> の後に分数の形で音長の伸縮を与える。
+例えば八分音符3つ分を2つ分の長さに縮めるのが三連符であるが、この場合の分数は <code class="docutils literal"><span class="pre">3/2</span></code> となる。
+よく使われる分数としては、 <code class="docutils literal"><span class="pre">3/2</span></code> 、 <code class="docutils literal"><span class="pre">6/4</span></code> 、 <code class="docutils literal"><span class="pre">5/4</span></code> などがある。
+最後に音楽表記をとる。</p>
+<div class="lily-block-wrapper docutils container" id="tuplet-example">
+<div class="code-block-caption"><span class="caption-text">LilyPond: 連符</span><a class="headerlink" href="#tuplet-example" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\relative </span><span class="nb">c</span><span class="p">&#39;</span> <span class="p">{</span>
+  <span class="nf">\tuplet </span><span class="mi">3</span><span class="p">/</span><span class="mi">2</span> <span class="p">{</span> <span class="nb">c</span><span class="mi">4</span> <span class="nb">d</span> <span class="nb">e</span> <span class="p">}</span> <span class="nf">\tuplet </span><span class="mi">3</span><span class="p">/</span><span class="mi">2</span> <span class="p">{</span> <span class="nb">f</span><span class="mi">8</span> <span class="nb">e</span> <span class="nb">d</span> <span class="p">}</span> <span class="nf">\tuplet </span><span class="mi">6</span><span class="p">/</span><span class="mi">4</span> <span class="p">{</span> <span class="nb">e</span><span class="mi">16</span> <span class="nb">f</span> <span class="nb">e</span> <span class="nb">d</span> <span class="nb">c</span> <span class="nb">b</span> <span class="p">}</span>
+  <span class="nf">\tuplet </span><span class="mi">7</span><span class="p">/</span><span class="mi">4</span> <span class="p">{</span> <span class="nb">c</span><span class="mi">16</span> <span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span> <span class="nb">g</span> <span class="nb">a</span> <span class="nb">b</span> <span class="p">}</span> <span class="nb">c</span><span class="mi">2</span><span class="p">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img class="lily" src="../_images/lily/000b1de34dfa71b5b455fedf5ea4b14e124629fa.svg" alt="\relative c' {
+  \tuplet 3/2 { c4 d e } \tuplet 3/2 { f8 e d } \tuplet 6/4 { e16 f e d c b }
+  \tuplet 7/4 { c16 d e f g a b } c2.
+}" align="absbottom"/></div>
+<p>分子の数字が連符に描かれる数字になっていることを確認せよ。</p>
+<p>分数と音楽表記の間に数字で音長を指定することによって、連符の自動分割ができる。</p>
+<div class="lily-block-wrapper docutils container" id="tuplet-span-example">
+<div class="code-block-caption"><span class="caption-text">LilyPond: 連符の自動分割</span><a class="headerlink" href="#tuplet-span-example" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\relative </span><span class="nb">c</span><span class="p">&#39;</span> <span class="p">{</span>
+  <span class="nf">\tuplet </span><span class="mi">3</span><span class="p">/</span><span class="mi">2</span> <span class="p">{</span> <span class="nb">c</span><span class="mi">8</span> <span class="nb">d</span> <span class="nb">e</span> <span class="p">}</span> <span class="nf">\tuplet </span><span class="mi">3</span><span class="p">/</span><span class="mi">2</span> <span class="p">{</span> <span class="nb">f</span><span class="mi">4</span> <span class="nb">e</span><span class="mi">8</span> <span class="p">}</span> <span class="nf">\tuplet </span><span class="mi">3</span><span class="p">/</span><span class="mi">2</span> <span class="p">{</span> <span class="nb">d</span><span class="mi">8</span> <span class="nb">e</span> <span class="nb">d</span> <span class="p">}</span> <span class="nb">c</span><span class="mi">4</span>
+  <span class="nf">\tuplet </span><span class="mi">3</span><span class="p">/</span><span class="mi">2</span> <span class="p">{</span> <span class="nb">c</span><span class="mi">8</span> <span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span><span class="mi">4</span> <span class="nb">e</span><span class="mi">8</span> <span class="nb">d</span><span class="mi">8</span> <span class="nb">e</span> <span class="nb">d</span> <span class="p">}</span> <span class="nb">c</span><span class="mi">4</span>
+  <span class="nf">\tuplet </span><span class="mi">3</span><span class="p">/</span><span class="mi">2</span> <span class="mi">4</span> <span class="p">{</span> <span class="nb">c</span><span class="mi">8</span> <span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span><span class="mi">4</span> <span class="nb">e</span><span class="mi">8</span> <span class="nb">d</span><span class="mi">8</span> <span class="nb">e</span> <span class="nb">d</span> <span class="p">}</span> <span class="nb">c</span><span class="mi">4</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img class="lily" src="../_images/lily/17088a3e9c8fe1026499de8e4a01fb94054c17aa.svg" alt="\relative c' {
+  \tuplet 3/2 { c8 d e } \tuplet 3/2 { f4 e8 } \tuplet 3/2 { d8 e d } c4
+  \tuplet 3/2 { c8 d e f4 e8 d8 e d } c4
+  \tuplet 3/2 4 { c8 d e f4 e8 d8 e d } c4
+}" align="absbottom"/></div>
+<p>一小節目が数字を指定せず、一つずつ連符を作ったものである。
+二小節目は数字を指定しないまま一連の連符を一つの <code class="docutils literal"><span class="pre">{</span></code> <code class="docutils literal"><span class="pre">}</span></code> で囲んだものであり、全ての音符が一つの連符にまとまってしまっている。
+三小節目は数字を指定することで、一小節目と同じ結果を得られている。</p>
+<p>連符内の全ての音符が連桁で繋がっていない場合、自動的に角括弧が描かれる。</p>
+<p>TODO: tupletSpan <a class="reference external" href="http://lilypond.org/doc/v2.19/Documentation/notation/writing-rhythms.html#tuplets">http://lilypond.org/doc/v2.19/Documentation/notation/writing-rhythms.html#tuplets</a></p>
+</div>
+<div class="section" id="barline-and-bar-check">
+<span id="id8"></span><h2>小節線と小節チェック<a class="headerlink" href="#barline-and-bar-check" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>LilyPondは拍子記号に合わせて小節線を自動で付加する。手動で小節線を追加する場合、 <code class="docutils literal"><span class="pre">\bar</span></code> の後に小節線の種類を <code class="docutils literal"><span class="pre">&quot;</span></code> <code class="docutils literal"><span class="pre">&quot;</span></code> で囲って指定する。
+以下の例で使われている小節線の種類は一部で、全ての小節線は <span class="xref std std-ref">bar-line-list</span> で確認することができる。</p>
+<div class="lily-block-wrapper docutils container" id="barline-example">
+<div class="code-block-caption"><span class="caption-text">LilyPond: 小節線</span><a class="headerlink" href="#barline-example" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\relative </span><span class="nb">c</span><span class="p">&#39;</span> <span class="p">{</span>
+  <span class="nb">c</span><span class="mi">1</span> <span class="nf">\bar </span><span class="s1">&quot;|&quot;</span>
+  <span class="nb">c</span> <span class="nf">\bar </span><span class="s1">&quot;||&quot;</span>
+  <span class="nb">c</span> <span class="nf">\bar </span><span class="s1">&quot;.&quot;</span>
+  <span class="nb">c</span> <span class="nf">\bar </span><span class="s1">&quot;|.&quot;</span>
+  <span class="nb">c</span> <span class="nf">\bar </span><span class="s1">&quot;;&quot;</span>
+  <span class="nb">c</span> <span class="nf">\bar </span><span class="s1">&quot;!&quot;</span>
+  <span class="nb">c</span> <span class="nf">\bar </span><span class="s1">&quot;.|:&quot;</span>
+  <span class="nb">c</span> <span class="nf">\bar </span><span class="s1">&quot;:|.&quot;</span>
+  <span class="nb">c</span> <span class="nf">\bar </span><span class="s1">&quot;:..:&quot;</span>
+  <span class="nb">c</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img class="lily" src="../_images/lily/2d40a5e0ce036cdde6b4cc054bc99697cca87fa1.svg" alt="\relative c' {
+  c1 \bar &quot;|&quot;
+  c \bar &quot;||&quot;
+  c \bar &quot;.&quot;
+  c \bar &quot;|.&quot;
+  c \bar &quot;;&quot;
+  c \bar &quot;!&quot;
+  c \bar &quot;.|:&quot;
+  c \bar &quot;:|.&quot;
+  c \bar &quot;:..:&quot;
+  c
+}" align="absbottom"/></div>
+<p>よく使われるものは 複縦線 <code class="docutils literal"><span class="pre">||</span></code> と 終止線 <code class="docutils literal"><span class="pre">|.</span></code> であろう。
+繰り返しの小節線は <span class="xref std std-ref">repeat</span> で扱う <code class="docutils literal"><span class="pre">\repeat</span></code> コマンドで描かれるのが普通であり、 <code class="docutils literal"><span class="pre">\bar</span></code> としては多くは用いられない。</p>
+<p>小節線は小節の途中でも挿入できるが、小節番号は加算されない。</p>
+<div class="lily-block-wrapper docutils container" id="manual-barline-and-bar-number">
+<div class="code-block-caption"><span class="caption-text">LilyPond: 手動の小節線と小節番号</span><a class="headerlink" href="#manual-barline-and-bar-number" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\relative </span><span class="nb">c</span><span class="p">&#39;</span> <span class="p">{</span>
+  <span class="nb">c</span><span class="mi">8</span> <span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span> <span class="nb">g</span> <span class="nb">a</span> <span class="nb">b</span> <span class="nb">c</span>
+  <span class="nb">c</span><span class="p">,</span> <span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span> <span class="nb">g</span> <span class="nb">a</span> <span class="nb">b</span> <span class="nb">c</span>
+  <span class="nb">c</span><span class="p">,</span> <span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span> <span class="nf">\bar </span><span class="s1">&quot;||&quot;</span> <span class="nb">g</span> <span class="nb">a</span> <span class="nb">b</span> <span class="nb">c</span>
+  <span class="nb">c</span><span class="p">,</span> <span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span> <span class="nb">g</span> <span class="nb">a</span> <span class="nb">b</span> <span class="nb">c</span> <span class="nf">\break</span>
+<span class="nf">  </span><span class="nb">c</span><span class="p">,</span> <span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span> <span class="nb">g</span> <span class="nb">a</span> <span class="nb">b</span> <span class="nb">c</span>
+  <span class="nb">c</span><span class="p">,</span> <span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span> <span class="nb">g</span> <span class="nb">a</span> <span class="nb">b</span> <span class="nb">c</span>
+  <span class="nb">c</span><span class="p">,</span> <span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span> <span class="nb">g</span> <span class="nb">a</span> <span class="nb">b</span> <span class="nb">c</span>
+  <span class="nb">c</span><span class="p">,</span> <span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span> <span class="nb">g</span> <span class="nb">a</span> <span class="nb">b</span> <span class="nb">c</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img class="lily" src="../_images/lily/a87cfac7e1f5dc6e7f401046f9cf1dd4ebf54cdd.svg" alt="\relative c' {
+  c8 d e f g a b c
+  c, d e f g a b c
+  c, d e f \bar &quot;||&quot; g a b c
+  c, d e f g a b c \break
+  c, d e f g a b c
+  c, d e f g a b c
+  c, d e f g a b c
+  c, d e f g a b c
+}" align="absbottom"/></div>
+<p>三小節目の途中で二重線を挿入しているが、二段目の最初の小節番号が5であることに注目せよ。
+<code class="docutils literal"><span class="pre">\break</span></code> は強制的に改行するコマンドであり、 <span class="xref std std-ref">breaking</span> で扱う。</p>
+</div>
+<div class="section" id="exercise-1-3">
+<span id="id9"></span><h2>練習問題<a class="headerlink" href="#exercise-1-3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>以下のコード片に記述を追加し、各画像の通りの楽譜を出力せよ。</p>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\version </span><span class="s1">&quot;2.19.59&quot;</span>
+<span class="nf">\relative </span><span class="nb">c</span><span class="p">&#39;</span> <span class="p">{</span>
+  <span class="c1">% ADD CODE HERE</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="lily-block-wrapper docutils container" id="w1d3-exercise1">
+<div class="code-block-caption"><span class="caption-text">LilyPond: 第一週第三日 練習問題(1)</span><a class="headerlink" href="#w1d3-exercise1" title="このコードへのパーマリンク">¶</a></div>
+<img class="lily" src="../_images/lily/a07774d5ac2470671cff9e3ffd69a66e70b02cde.svg" alt="\relative c'{
+  c'4(  &lt;g e c&gt; c q)  |
+  d(   &lt;b g d&gt; d q)  |
+  &lt;g, e'&gt;8. &lt;e c'&gt;16~ q8 q~ q[ q &lt;d b'&gt; &lt;f d'&gt;] |
+  &lt;e c'&gt;1 |  \bar &quot;|.&quot;
+}" align="absbottom"/></div>
+<div class="lily-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">LilyPond: 第一週第三日 練習問題(2)</span><a class="headerlink" href="#id10" title="このコードへのパーマリンク">¶</a></div>
+<img class="lily" src="../_images/lily/72247d8d31a3e6b44542aa15c22f9889c9c4eca4.svg" alt="\relative c'{
+  \tuplet 3/2 { g'8 c, c }
+  \tuplet 3/2 { g'4    c,8 }
+  \tuplet 3/2 { g'8 c,16[ c] c8 }
+  \tuplet 6/4 { g'16 c, c d e f } |
+  \tuplet 5/4 { g8\( a( g) a( g)\) }
+  g,8 g'~ \tuplet 5/4 { g16 f e d c } \bar &quot;|.&quot;
+}" align="absbottom"/></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">目次</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">第一週</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="day_1.html">第一日</a></li>
+<li class="toctree-l2"><a class="reference internal" href="day_2.html">第二日</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">第三日</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#chord">和音</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chord-repeat">和音の繰り返し (1)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#single-note-or-chord-repeat">単音か和音の繰り返し</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tie-and-slur">タイとスラー</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beam">連桁</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tuplet">連符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#barline-and-bar-check">小節線と小節チェック</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-1-3">練習問題</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="day_4.html">第四日</a></li>
+<li class="toctree-l2"><a class="reference internal" href="day_5.html">第五日</a></li>
+<li class="toctree-l2"><a class="reference internal" href="day_6.html">第六日</a></li>
+<li class="toctree-l2"><a class="reference internal" href="day_7.html">第七日</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../week_2/index.html">第二週</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_3/index.html">第三週</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_4/index.html">第四週</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/index.html">付録</a></li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="day_2.html"
+                        title="前の章へ">第二日</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="day_4.html"
+                        title="次の章へ">第四日</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="検索" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="day_4.html" title="第四日"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="day_2.html" title="第二日"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LilyPond四週間</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >第一週</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5 で生成しました。
+    </div>
+  </body>
+</html>

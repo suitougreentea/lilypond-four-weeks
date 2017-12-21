@@ -1,0 +1,238 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>第一日 &#8212; LilyPond四週間</title>
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="第二日" href="day_2.html" />
+    <link rel="prev" title="第一週" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="day_2.html" title="第二日"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="第一週"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LilyPond四週間</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">第一週</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="week-1-day-1">
+<span id="id1"></span><h1>第一日<a class="headerlink" href="#week-1-day-1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="lilypond">
+<span id="lilypond-official-page"></span><h2>LilyPondの公式ページ<a class="headerlink" href="#lilypond" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>日本語の公式ページは以下にある。</p>
+<p><a class="reference external" href="http://lilypond.org/index.ja.html">LilyPond - みんなの楽譜作成</a></p>
+<p>楽譜を記述するにあたって頻繁に参照するページは 「<a class="reference external" href="http://lilypond.org/website/manuals.ja.html">マニュアル</a>」 に集積されている。後述する「開発版」のマニュアルは、<a class="reference external" href="http://lilypond.org/development.ja.html">コミュニティ/開発/マニュアル</a> にある。</p>
+<ul class="simple">
+<li><a class="reference external" href="http://lilypond.org/website/introduction.ja.html">導入部</a> - 長所や実例の紹介</li>
+<li><a class="reference external" href="http://lilypond.org/download.ja.html">ダウンロード</a></li>
+<li><a class="reference external" href="http://lilypond.org/website/manuals.ja.html">マニュアル</a><ul>
+<li>導入部<ul>
+<li><strong>学習</strong> - 入門者のためのチュートリアルと、簡単な調整方法が書かれている</li>
+</ul>
+</li>
+<li>常用するマニュアル<ul>
+<li><strong>記譜法(リファレンス)</strong> - 「学習」より細かく、求める楽譜を実現するための方法が書かれている</li>
+<li><strong>Snippets(スニペット)</strong> (英語のみ) - 項目ごとに1つのテーマについて、特殊な刻譜を行う方法や工夫が列挙されている</li>
+</ul>
+</li>
+<li>常用外のマニュアル<ul>
+<li><strong>Internals(内部リファレンス)</strong> (英語のみ) - LilyPond が内部的に行っている処理について書かれている。既存のコマンドで対処できない場合に参照する</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference external" href="http://lilypond.org/community.ja.html">コミュニティ</a> - 開発版のマニュアルと、開発への貢献について</li>
+</ul>
+</div>
+<div class="section" id="downloading-and-installing-lilypond">
+<span id="id8"></span><h2>LilyPondのダウンロード・インストール<a class="headerlink" href="#downloading-and-installing-lilypond" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>公式ページでは、「<strong>安定版</strong>」としてバージョン 2.18.2 を、「<strong>開発版</strong>」としてバージョン 2.19.xx を配布している。このドキュメントではバージョン 2.19.59 以降を対象にしているため、「<strong>開発版</strong>」をインストールされたい。</p>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://lilypond.org/development.ja.html">開発版の配布ページ</a> から、実行中の OS に合ったファイルをダウンロードする</li>
+<li><a class="reference external" href="http://lilypond.org/download.ja.html">安定版の配布ページ</a> で、 OS ごとのインストールの手順を参照し、それを行う</li>
+</ol>
+</div>
+<div class="section" id="launching-lilypond">
+<span id="id11"></span><h2>LilyPondの実行・楽譜のコンパイル<a class="headerlink" href="#launching-lilypond" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Windowsと、Unix系での実行方法をそれぞれ記す。Windows では、エクスプローラから実行する方法、コマンドラインから実行する方法がある。</p>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<p class="last">記述例の <code class="docutils literal"><span class="pre">\version</span> <span class="pre">&quot;z.yy.xx&quot;</span></code> は、LilyPond の文法変更に沿ってソースを変換するために必要で、ファイルの先頭に必ず書く。</p>
+</div>
+<div class="section" id="windows">
+<h3>Windows（エクスプローラから）<a class="headerlink" href="#windows" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>テキストエディタで、以下の内容のファイルを 「test.ly」 としてデスクトップに保存する。</li>
+</ol>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\version </span><span class="s1">&quot;2.19.59&quot;</span>
+<span class="nf">\relative </span><span class="p">{</span> <span class="nb">c</span><span class="p">&#39;</span> <span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span> <span class="nb">g</span> <span class="nb">a</span> <span class="nb">b</span> <span class="nb">c</span> <span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>デスクトップ上の 「test.ly」 を右クリックし、「<strong>Generate PDF</strong>」を選択する。または、 「test.ly」 をダブルクリックする。</li>
+</ol>
+<img alt="../_images/day_1_generate_pdf.png" src="../_images/day_1_generate_pdf.png" />
+<p>エラーがなければ、デスクトップに 「test.pdf」 が生成される。エラーがある場合、その詳細は 「test.log」 に記録される。</p>
+<p>Windows 版では、LilyPond のインストール時にエディタ(LilyPad)がインストールされるが、メモ帳と同等の機能しかなく、特に使う必要はない。</p>
+</div>
+<div class="section" id="id12">
+<h3>Windows（コマンドラインから）<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>テキストエディタで、以下の内容のファイルを 「test.ly」 として保存する</li>
+</ol>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\version </span><span class="s1">&quot;2.19.59&quot;</span>
+<span class="nf">\relative </span><span class="p">{</span> <span class="nb">c</span><span class="p">&#39;</span> <span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span> <span class="nb">g</span> <span class="nb">a</span> <span class="nb">b</span> <span class="nb">c</span> <span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>スタートボタンを右クリックし、PowerShell を開く</li>
+<li>以下のコマンドで 「test.ly」 をコンパイルする</li>
+</ol>
+<div class="highlight-bat"><div class="highlight"><pre><span></span>chcp 437         # コンソール文字化けを防ぐ
+<span class="k">cd</span> path¥to¥file  # (必要ならば) test.ly のあるディレクトリに行く
+lilypond test
+</pre></div>
+</div>
+<p>エラーがなければ、同じフォルダに 「test.pdf」 ができる。</p>
+</div>
+<div class="section" id="unix-linux-freebsd-macos">
+<h3>Unix 系 (Linux / FreeBSD / macOS)<a class="headerlink" href="#unix-linux-freebsd-macos" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>テキストエディタで以下の内容の 「test.ly」 を作成する。</li>
+</ol>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\version </span><span class="s1">&quot;2.19.59&quot;</span>
+<span class="nf">\relative </span><span class="p">{</span> <span class="nb">c</span><span class="p">&#39;</span> <span class="nb">d</span> <span class="nb">e</span> <span class="nb">f</span> <span class="nb">g</span> <span class="nb">a</span> <span class="nb">b</span> <span class="nb">c</span> <span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>端末（ターミナル）を開き、 「test.ly」 をコンパイルする。</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /path/to/file  <span class="c1"># (必要ならば) test.ly のあるディレクトリに行く</span>
+$ lilypond <span class="nb">test</span>
+</pre></div>
+</div>
+<p>エラーがなければ、同じフォルダに 「test.pdf」 ができる。</p>
+</div>
+</div>
+<div class="section" id="frescobaldi">
+<span id="frescobaldi-introduction"></span><h2>Frescobaldi<a class="headerlink" href="#frescobaldi" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p><a class="reference external" href="http://frescobaldi.org/">Frescobaldi</a> は、LilyPond に特化された機能を持つエディタである。</p>
+<p>代表的な機能に次のようなものがある。</p>
+<ul class="simple">
+<li>ソース→楽譜、楽譜→ソース 対応する箇所の表示・ジャンプ</li>
+<li>コードのハイライト表示</li>
+<li>コマンドの補完</li>
+<li>MIDI 再生</li>
+<li>ソースの移調</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/day_1_frescobaldi.png"><img alt="../_images/day_1_frescobaldi.png" class="align-center" src="../_images/day_1_frescobaldi.png" style="width: 930.4000000000001px; height: 704.0px;" /></a>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">目次</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">第一週</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">第一日</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lilypond">LilyPondの公式ページ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downloading-and-installing-lilypond">LilyPondのダウンロード・インストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launching-lilypond">LilyPondの実行・楽譜のコンパイル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#frescobaldi">Frescobaldi</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="day_2.html">第二日</a></li>
+<li class="toctree-l2"><a class="reference internal" href="day_3.html">第三日</a></li>
+<li class="toctree-l2"><a class="reference internal" href="day_4.html">第四日</a></li>
+<li class="toctree-l2"><a class="reference internal" href="day_5.html">第五日</a></li>
+<li class="toctree-l2"><a class="reference internal" href="day_6.html">第六日</a></li>
+<li class="toctree-l2"><a class="reference internal" href="day_7.html">第七日</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../week_2/index.html">第二週</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_3/index.html">第三週</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_4/index.html">第四週</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/index.html">付録</a></li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="index.html"
+                        title="前の章へ">第一週</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="day_2.html"
+                        title="次の章へ">第二日</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="検索" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="day_2.html" title="第二日"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="第一週"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LilyPond四週間</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >第一週</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5 で生成しました。
+    </div>
+  </body>
+</html>

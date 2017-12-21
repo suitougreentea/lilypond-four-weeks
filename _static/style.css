@@ -1,0 +1,42 @@
+.lily-block-wrapper {
+  border: 1px solid #C6C9CB;
+}
+
+.lily-block-wrapper pre {
+  border: none;
+  border-bottom: 1px solid #C6C9CB;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+
+.lily-block-wrapper img {
+  padding: 10px;
+  box-sizing: border-box;
+  /*width: 100%;
+  max-width: 720px;
+  min-width: 400px;*/
+}
+
+.lily-block-wrapper .lily {
+  overflow-x: scroll;
+}
+
+div.code-block-caption {
+  border: none;
+}
+
+.sectnum {
+  margin-right: 10px;
+}
+
+.docutils.literal {
+  padding: 0px 2px;
+}
+
+p {
+  text-indent: 1em;
+}
+
+.indented {
+  margin-left: 1em;
+}

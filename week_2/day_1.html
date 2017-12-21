@@ -1,0 +1,273 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>第一日 &#8212; LilyPond四週間</title>
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="第二日" href="day_2.html" />
+    <link rel="prev" title="第二週" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="day_2.html" title="第二日"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="第二週"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LilyPond四週間</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">第二週</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="week-2-day-1">
+<span id="id1"></span><h1>第一日<a class="headerlink" href="#week-2-day-1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="context">
+<span id="id2"></span><h2>コンテキスト<a class="headerlink" href="#context" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>LilyPondの更なる利用のために、ここでコンテキストという概念について理解しておく必要がある。</p>
+<p>LilyPondの楽譜表現は階層構造になっており、あるコンテキストが別のコンテキストを含むという形をとっている。
+代表的なコンテキストは <code class="docutils literal"><span class="pre">Score</span></code> 、 <code class="docutils literal"><span class="pre">Staff</span></code> 、 <code class="docutils literal"><span class="pre">Voice</span></code> の3つであり、それぞれが出力される楽譜の「楽譜全体」、「譜（1パート分の五線譜）」「声部」に対応している。
+<code class="docutils literal"><span class="pre">Score</span></code> は1つまたは複数の <code class="docutils literal"><span class="pre">Staff</span></code> を含むことができ、 <code class="docutils literal"><span class="pre">Staff</span></code> は1つまたは複数の <code class="docutils literal"><span class="pre">Voice</span></code> を含むことができる。
+以下の図は、コンテキストの階層構造を図示したものである。</p>
+<p>TODO</p>
+<p>コンテキストは <a class="reference internal" href="#engraver"><span class="std std-ref">エングラーバ</span></a> で扱うエングラーバというものをいくつか持ち、それぞれのエングラーバが実際に音楽記号を配置する。
+例えば、 <code class="docutils literal"><span class="pre">Voice</span></code> コンテキストは <code class="docutils literal"><span class="pre">Note_heads_engraver</span></code> と呼ばれるエングラーバを持ち、このエングラーバは符頭を楽譜上に描く。
+<code class="docutils literal"><span class="pre">Score</span></code> コンテキストは <code class="docutils literal"><span class="pre">Metronome_mark_engraver</span></code> というエングラーバを持ち、楽譜全体で共有されるテンポ記号を描く。</p>
+</div>
+<div class="section" id="creating-context">
+<span id="id3"></span><h2>コンテキストの生成<a class="headerlink" href="#creating-context" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>コンテキストは <code class="docutils literal"><span class="pre">\new</span></code> コマンドで生成する。 <code class="docutils literal"><span class="pre">\new</span></code> の後に、生成するコンテキストの種類を与え、必要であればコンテキストの固有名を <code class="docutils literal"><span class="pre">=</span></code> と文字列で指定する。
+最後に音楽表記を与える。
+ただし、 <code class="docutils literal"><span class="pre">Score</span></code> <strong>コンテキストは</strong> <code class="docutils literal"><span class="pre">\new</span> <span class="pre">Score</span></code> <strong>によってではなく、</strong> <code class="docutils literal"><span class="pre">\score</span></code> <strong>によって生成する。</strong>
+<code class="docutils literal"><span class="pre">\score</span></code> は <code class="docutils literal"><span class="pre">{</span></code> <code class="docutils literal"><span class="pre">}</span></code> で囲まれた音楽表記やいくつかの特殊なコマンドを取り、TODO
+<code class="docutils literal"><span class="pre">\score</span></code> は <code class="docutils literal"><span class="pre">\book</span></code> 以外のいかなる子要素になってはならない。TODO</p>
+<div class="lily-block-wrapper docutils container" id="creating-context-example">
+<div class="code-block-caption"><span class="caption-text">LilyPond: コンテキストの生成</span><a class="headerlink" href="#creating-context-example" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nb">\score </span><span class="p">{</span>
+  <span class="p">&lt;&lt;</span>
+    <span class="nb">\new </span><span class="no">Staff </span><span class="p">{</span>
+      <span class="nb">\new </span><span class="no">Voice </span><span class="p">{</span>
+        <span class="nb">g</span><span class="p">&#39;</span><span class="mi">4</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nb">\new </span><span class="no">Staff </span><span class="o">=</span> <span class="s1">&quot;staff2&quot;</span> <span class="p">{</span>
+      <span class="nb">\new </span><span class="no">Voice </span><span class="p">{</span>
+        <span class="nb">c</span><span class="p">&#39;</span><span class="mi">4</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">&gt;&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img class="lily" src="../_images/lily/94f73fd57814d0547e17d777948bea746a5c1038.svg" alt="\score {
+  &lt;&lt;
+    \new Staff {
+      \new Voice {
+        g'4
+      }
+    }
+    \new Staff = &quot;staff2&quot; {
+      \new Voice {
+        c'4
+      }
+    }
+  &gt;&gt;
+}" align="absbottom"/></div>
+<p>上の例では、 <code class="docutils literal"><span class="pre">\score</span></code> によって <code class="docutils literal"><span class="pre">Score</span></code> コンテキストを生成し、 <code class="docutils literal"><span class="pre">&lt;&lt;</span></code> <code class="docutils literal"><span class="pre">&gt;&gt;</span></code> で囲まれた2つの <code class="docutils literal"><span class="pre">\new</span> <span class="pre">Staff</span></code> により同時に2つの譜を作り出している。
+後者の <code class="docutils literal"><span class="pre">Staff</span></code> には <code class="docutils literal"><span class="pre">staff2</span></code> という名前が付いており、ソースファイルの別の場所から参照することができる。</p>
+</div>
+<div class="section" id="implicit-context-creation">
+<span id="id4"></span><h2>コンテキストの暗黙的作成<a class="headerlink" href="#implicit-context-creation" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>第一週の種々の例で見てきたように、単純に音楽表記を <code class="docutils literal"><span class="pre">{</span></code> <code class="docutils literal"><span class="pre">}</span></code> で囲むことで楽譜を生成することができた。
+これはLilyPondが内部的にコンテキストを自動生成しているためであり、TODO</p>
+<div class="lily-block-wrapper docutils container" id="simple-music-example">
+<div class="code-block-caption"><span class="caption-text">LilyPond: 単純な音楽表記</span><a class="headerlink" href="#simple-music-example" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nb">c</span><span class="p">&#39;</span><span class="mi">4</span> <span class="nb">d</span><span class="p">&#39;</span> <span class="nb">e</span><span class="p">&#39;</span> <span class="nb">f</span><span class="p">&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>これは以下のように解釈される。</p>
+<div class="lily-block-wrapper docutils container" id="implicit-context-creation-example">
+<div class="code-block-caption"><span class="caption-text">LilyPond: 暗黙的に作成されるコンテキスト</span><a class="headerlink" href="#implicit-context-creation-example" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nf">\book </span><span class="p">{</span>
+  <span class="nb">\score </span><span class="p">{</span>
+    <span class="nb">\new </span><span class="no">Staff </span><span class="p">{</span>
+      <span class="nb">\new </span><span class="no">Voice </span><span class="p">{</span>
+        <span class="nb">c</span><span class="p">&#39;</span><span class="mi">4</span> <span class="nb">d</span><span class="p">&#39;</span> <span class="nb">e</span><span class="p">&#39;</span> <span class="nb">f</span><span class="p">&#39;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nb">\layout </span><span class="p">{</span> <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nb">\paper </span><span class="p">{</span> <span class="p">}</span>
+  <span class="nf">\header </span><span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>音楽が <code class="docutils literal"><span class="pre">\new</span> <span class="pre">Voice</span></code> を省略して表記されるとき、暗黙的に <code class="docutils literal"><span class="pre">Voice</span></code> コンテキストが作成される。
+この表記を囲んでいる <code class="docutils literal"><span class="pre">Staff</span></code> が存在しない時、暗黙的に <code class="docutils literal"><span class="pre">Staff</span></code> が作成される。
+同様に、 <code class="docutils literal"><span class="pre">\score</span></code> 、 <code class="docutils literal"><span class="pre">\layout</span></code> 、 <code class="docutils literal"><span class="pre">\book</span></code> 、 <code class="docutils literal"><span class="pre">\paper</span></code> 、 <code class="docutils literal"><span class="pre">\header</span></code> が作成されている。</p>
+<div class="lily-block-wrapper docutils container" id="creating-staff-in-voice">
+<div class="code-block-caption"><span class="caption-text">LilyPond: Voice内でのStaff生成</span><a class="headerlink" href="#creating-staff-in-voice" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="nb">\score </span><span class="p">{</span>
+  <span class="nb">\new </span><span class="no">Staff </span><span class="p">{</span>
+    <span class="nb">\new </span><span class="no">Voice </span><span class="p">{</span>
+      <span class="nb">\new </span><span class="no">Staff </span><span class="p">{</span>
+        <span class="nb">c</span><span class="p">&#39;</span><span class="mi">4</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>上のコードのように、 <code class="docutils literal"><span class="pre">Voice</span></code> コンテキスト内で <code class="docutils literal"><span class="pre">\new</span> <span class="pre">Staff</span></code> を呼び出す時、 <code class="docutils literal"><span class="pre">Voice</span></code> は <code class="docutils literal"><span class="pre">Staff</span></code> を含むことができないから、
+その外部にある <code class="docutils literal"><span class="pre">Score</span></code> コンテキストを探し、 <code class="docutils literal"><span class="pre">Score</span></code> の子コンテキストとして <code class="docutils literal"><span class="pre">Staff</span></code> が作成される。
+（もちろん、 <code class="docutils literal"><span class="pre">\score</span></code> が存在していない時には暗黙的に作成される。）
+結果的に、 <code class="docutils literal"><span class="pre">Score</span></code> 内には、 <code class="docutils literal"><span class="pre">Score</span></code> の直下にある <code class="docutils literal"><span class="pre">Staff</span></code> と、 <code class="docutils literal"><span class="pre">Voice</span></code> 内で宣言された <code class="docutils literal"><span class="pre">Staff</span></code> の二つが作成されるため、出力は以下のようになる。</p>
+<div class="lily-block-wrapper docutils container" id="creating-staff-in-voice-answer">
+<div class="code-block-caption"><span class="caption-text">LilyPond</span><a class="headerlink" href="#creating-staff-in-voice-answer" title="このコードへのパーマリンク">¶</a></div>
+<img class="lily" src="../_images/lily/2e280f756b8f7ea2b4cf6b270ed52da16c090d87.svg" alt="\score {
+  \new Staff {
+    \new Voice {
+      \new Staff {
+        c'4
+      }
+    }
+  }
+}" align="absbottom"/></div>
+<p>下段に新しく作成された <code class="docutils literal"><span class="pre">Staff</span></code> 内に暗黙的に <code class="docutils literal"><span class="pre">Voice</span></code> が作成され、そちらに音符が置かれていることに注意せよ。</p>
+</div>
+<div class="section" id="polyphony-2">
+<span id="id5"></span><h2>多声表記 (2)<a class="headerlink" href="#polyphony-2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p><a class="reference internal" href="../week_1/day_4.html#polyphony-1"><span class="std std-ref">多声表記 (1)</span></a> で、以下のような表記について学習した。</p>
+<div class="lily-block-wrapper docutils container" id="polyphony-using-double-slash">
+<div class="code-block-caption"><span class="caption-text">LilyPond: &lt;&lt; \\ &gt;&gt; を用いた多声表記</span><a class="headerlink" href="#polyphony-using-double-slash" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="p">&lt;&lt;</span> <span class="p">{</span> <span class="nb">g</span><span class="p">&#39;</span><span class="mi">4</span> <span class="nb">a</span><span class="p">&#39;</span> <span class="nb">b</span><span class="p">&#39;</span> <span class="nb">c</span><span class="p">&#39;&#39;</span> <span class="p">}</span> <span class="nf">\\ </span><span class="p">{</span> <span class="nb">e</span><span class="p">&#39;</span><span class="mi">4</span> <span class="nb">f</span><span class="p">&#39;</span> <span class="nb">g</span><span class="p">&#39;</span> <span class="nb">a</span><span class="p">&#39;</span> <span class="p">}</span> <span class="p">&gt;&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>これは <code class="docutils literal"><span class="pre">\new</span> <span class="pre">Voice</span></code> を用いた以下の表記と同等である。</p>
+<div class="lily-block-wrapper docutils container" id="polyphony-using-new-voice">
+<div class="code-block-caption"><span class="caption-text">LilyPond: \new Voice を用いた多声表記</span><a class="headerlink" href="#polyphony-using-new-voice" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-lilypond"><div class="highlight"><pre><span></span><span class="p">&lt;&lt;</span>
+  <span class="nb">\new </span><span class="no">Voice </span><span class="o">=</span> <span class="s1">&quot;1&quot;</span> <span class="p">{</span> <span class="nf">\voiceOne </span><span class="nb">g</span><span class="p">&#39;</span><span class="mi">4</span> <span class="nb">a</span><span class="p">&#39;</span> <span class="nb">b</span><span class="p">&#39;</span> <span class="nb">c</span><span class="p">&#39;&#39;</span> <span class="p">}</span>
+  <span class="nb">\new </span><span class="no">Voice </span><span class="o">=</span> <span class="s1">&quot;2&quot;</span> <span class="p">{</span> <span class="nf">\voiceTwo </span><span class="nb">e</span><span class="p">&#39;</span><span class="mi">4</span> <span class="nb">f</span><span class="p">&#39;</span> <span class="nb">g</span><span class="p">&#39;</span> <span class="nb">a</span><span class="p">&#39;</span> <span class="p">}</span>
+<span class="p">&gt;&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>1つの譜の中で複数の声部を保持するために、 <code class="docutils literal"><span class="pre">Staff</span></code> コンテキスト内に複数の <code class="docutils literal"><span class="pre">Voice</span></code> コンテキストを持たせているというわけである。</p>
+<p>TODO: voices</p>
+<p>TODO: スパナを繋げる</p>
+</div>
+<div class="section" id="engraver">
+<span id="id6"></span><h2>エングラーバ<a class="headerlink" href="#engraver" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">目次</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../week_1/index.html">第一週</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">第二週</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">第一日</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#context">コンテキスト</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-context">コンテキストの生成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implicit-context-creation">コンテキストの暗黙的作成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polyphony-2">多声表記 (2)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#engraver">エングラーバ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="day_2.html">第二日</a></li>
+<li class="toctree-l2"><a class="reference internal" href="day_3.html">第三日</a></li>
+<li class="toctree-l2"><a class="reference internal" href="day_4.html">第四日</a></li>
+<li class="toctree-l2"><a class="reference internal" href="day_5.html">第五日</a></li>
+<li class="toctree-l2"><a class="reference internal" href="day_6.html">第六日</a></li>
+<li class="toctree-l2"><a class="reference internal" href="day_7.html">第七日</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../week_3/index.html">第三週</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_4/index.html">第四週</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/index.html">付録</a></li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="index.html"
+                        title="前の章へ">第二週</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="day_2.html"
+                        title="次の章へ">第二日</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="検索" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="day_2.html" title="第二日"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="第二週"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LilyPond四週間</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >第二週</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5 で生成しました。
+    </div>
+  </body>
+</html>
