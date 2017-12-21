@@ -1,3 +1,6 @@
 [submodule "extensions/lilypondlexer"]
 	path = extensions/lilypondlexer
 	url = https://github.com/suitougreentea/lilypondlexer.git
+[submodule "extensions/sphinx-lilypond"]
+	path = extensions/sphinx-lilypond
+	url = https://github.com/suitougreentea/sphinx-lilypond.git
